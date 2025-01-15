@@ -15,7 +15,6 @@ public class LoginForm {
     private JTextPane resultsPanel;
     private JTextField commandsPanel;
     private JButton sendButton;
-    private JTextPane textPane1;
 
     public LoginForm() {
         JFrame frame = new JFrame("LoginForm");
@@ -27,6 +26,7 @@ public class LoginForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String url = "jdbc:postgresql://localhost:5432/test1";
+                frame.dispose();
 
                 try (Connection connection = DriverManager.getConnection(url, usernameField.getText(), passwordField.getText())) {
                     System.out.println("Połączono z bazą danych PostgreSQL!");
