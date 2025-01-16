@@ -42,7 +42,7 @@ public class ClientMainPanel extends JFrame {
 
         //panel z przyciskami
         actionsPanel = new JPanel();
-        actionsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 5));
+        actionsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
         availableCarsButton = new JButton("Dostępne samochody");
         myCarsButton = new JButton("Moje samochody");
 

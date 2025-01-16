@@ -1,5 +1,7 @@
 package org.example.gui.client.dialogs;
 
+import org.example.gui.shared.dialogs.Dialog;
+
 import javax.swing.*;
 
 public class ReturnConfirmationDialog extends Dialog {

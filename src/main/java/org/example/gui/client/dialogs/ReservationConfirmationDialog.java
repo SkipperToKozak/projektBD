@@ -1,8 +1,10 @@
 package org.example.gui.client.dialogs;
 
+import org.example.gui.shared.dialogs.Dialog;
+
 import javax.swing.*;
 
-public class ReservationConfirmationDialog extends Dialog{
+public class ReservationConfirmationDialog extends Dialog {
     public ReservationConfirmationDialog() {
         super("Potwierdzenie rezerwacji");
         messageLabel.setText("Czy na pewno chcesz zarezerwować ten samochód?");

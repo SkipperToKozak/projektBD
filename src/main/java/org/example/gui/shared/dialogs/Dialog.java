@@ -1,4 +1,4 @@
-package org.example.gui.client.dialogs;
+package org.example.gui.shared.dialogs;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,5 +1,7 @@
 package org.example.gui.employee.panels;
 
+import org.example.gui.shared.buttons.JGradientButton;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -14,12 +16,12 @@ public class EmployeeMainPanel extends JFrame {
     private JPanel centerPanel;
     private CardLayout cardLayout;
     private EmployeeAvailableCarsListPanel availableCarsListPanel = new EmployeeAvailableCarsListPanel();
+    private JGradientButton addCarButton;
 //    private RentedCarPanel rentedCarPanel;
     public EmployeeMainPanel(String username) {
         super();
         setTitle("Panel główny");
-        setSize(800, 600);
-        setMinimumSize(new Dimension(800, 600));
+        setMinimumSize(new Dimension(1000, 600));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
@@ -33,17 +35,18 @@ public class EmployeeMainPanel extends JFrame {
         northPanel.setLayout(new GridLayout(1, 2));
         add(northPanel, BorderLayout.NORTH);
 
-
-
-
         //panel z przyciskami
         actionsPanel = new JPanel();
-        actionsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 5));
+        actionsPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
         availableCarsButton = new JButton("Dostępne samochody");
         clientsButton = new JButton("Klienci");
+        addCarButton = new JGradientButton("Dodaj samochód", new Color(138, 237, 138));
+
+
 
         actionsPanel.add(availableCarsButton);
         actionsPanel.add(clientsButton);
+        actionsPanel.add(addCarButton);
 
         GridBagConstraints gbc_actionsPanel = new GridBagConstraints();
         gbc_actionsPanel.gridx = 0;
