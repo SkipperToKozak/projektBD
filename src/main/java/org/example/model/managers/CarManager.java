@@ -4,6 +4,7 @@ import org.example.dao.CarDAO;
 import org.example.model.Car;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class CarManager {
     private final CarDAO carDAO;
@@ -12,8 +13,8 @@ public class CarManager {
         carDAO = new CarDAOImpl();
     }
 
-    public boolean addCar(String carID, String model, int year) {
-        var car = new Car(carID, model, year);
+    public boolean addCar(String carID, String brand, String model, int productionYear, String color, int seatAmount, int horsePower, int mileage, LocalDate lastCarInspection) {
+        var car = new Car(carID, brand, model, productionYear, color, seatAmount, horsePower, mileage, lastCarInspection);
         try {
             carDAO.addCar(car);
             return true;
@@ -22,6 +23,17 @@ public class CarManager {
             return false;
         }
     }
+    private String id;
+    private String brand;
+    private String model;
+    private int productionYear;
+    private String color;
+    private int seatAmount;
+    private int horsePower;
+    private int mileage;
+    private boolean available;
+    private String status;
+    private LocalDate lastCarInspection;
 
     public Car getCarByID(String id) {
         try {

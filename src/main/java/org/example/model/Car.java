@@ -15,12 +15,18 @@ public class Car {
     private String status;
     private LocalDate lastCarInspection;
 
-    public Car(String id, String model, int productionYear) {
+    public Car(String id, String brand, String model, int productionYear, String color, int seatAmount, int horsePower, int mileage, LocalDate lastCarInspection) {
         this.id = id;
+        this.brand = brand;
         this.model = model;
         this.productionYear = productionYear;
+        this.color = color;
+        this.seatAmount = seatAmount;
+        this.horsePower = horsePower;
+        this.mileage = mileage;
         this.available = true;
-        this.status = "Gotowy";
+        this.status = "Zdolny do jazdy";
+        this.lastCarInspection = lastCarInspection;
     }
 
     public String getId() {

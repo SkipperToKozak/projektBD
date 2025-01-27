@@ -90,4 +90,14 @@ public class ReservationManager {
         }
     }
 
+    public boolean showClientHires(int clientId) {
+        var client = userDAO.getClientById(clientId);
+        try {
+            reservationDAO.getClientHires(client);
+            return true;
+        } catch(Exception e) {
+            return false;
+        }
+    }
+
 }

@@ -15,4 +15,12 @@ public class UserManager {
             return false;
         }
     }
+
+    public boolean addClient() {
+        return false;
+    }
+
+    public boolean addEmployee() {
+        return false;
+    }
 }
