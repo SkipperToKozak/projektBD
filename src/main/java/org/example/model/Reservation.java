@@ -9,6 +9,12 @@ public class Reservation {
     private LocalDateTime startDate;
     private LocalDateTime endDate;
 
+    public Reservation(String carId, String userId, LocalDateTime startDate) {
+        this.carId = carId;
+        this.userId = userId;
+        this.startDate = startDate;
+    }
+
     public String getId() {
         return id;
     }
