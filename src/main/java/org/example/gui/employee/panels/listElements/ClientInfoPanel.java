@@ -1,18 +1,21 @@
-package org.example.gui.client.panels.listElements.carPanel;
+package org.example.gui.employee.panels.listElements;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class CarPanel extends JPanel {
-    private JLabel carBrandLabel;
-    private JLabel carModelLabel;
-    private JLabel carYearLabel;
-    protected JPanel buttonPanel;
+public class ClientInfoPanel extends JPanel {
+    private JLabel nameLabel;
+    private JLabel surnameLabel;
+    private JLabel PESELLabel;
+    private JPanel buttonPanel;
 
-    public CarPanel(String carBrand, String carModel, String carYear) {
-        carBrandLabel = new JLabel("Marka: " + carBrand);
-        carModelLabel = new JLabel("Model: " + carModel);
-        carYearLabel = new JLabel("Rok produkcji: " + carYear);
+    public ClientInfoPanel(String name, String surname, String PESEL) {
+        super();
+        nameLabel = new JLabel("Imię: " + name);
+        surnameLabel = new JLabel("Nazwisko: " + surname);
+        PESELLabel = new JLabel("PESEL: " + PESEL);
+
+        setBackground(new Color(251, 179, 105, 255));
 
         setLayout(new GridBagLayout());
         setBorder(BorderFactory.createRaisedBevelBorder());
@@ -23,16 +26,15 @@ public class CarPanel extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new Insets(5, 10, 5, 10);
 
-
         gbc.gridx = 0;
         gbc.gridy = 0;
-        add(carBrandLabel, gbc);
+        add(nameLabel, gbc);
 
         gbc.gridx = 1;
-        add(carModelLabel, gbc);
+        add(surnameLabel, gbc);
 
         gbc.gridx = 2;
-        add(carYearLabel, gbc);
+        add(PESELLabel, gbc);
 
         gbc.gridwidth = 3;
         gbc.gridx = 0;
@@ -43,5 +45,6 @@ public class CarPanel extends JPanel {
 
         // Ustaw preferowany rozmiar (opcjonalnie)
         setPreferredSize(new Dimension(300, 60));
+
     }
 }

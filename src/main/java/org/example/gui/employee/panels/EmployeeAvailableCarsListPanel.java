@@ -1,7 +1,7 @@
 package org.example.gui.employee.panels;
 
 import org.example.gui.client.panels.listElements.carPanel.AvailableCarPanel;
-import org.example.gui.client.panels.listElements.carPanel.CarPanel;
+import org.example.gui.shared.panels.listElements.CarPanel;
 import org.example.gui.client.panels.listElements.carPanel.RentedCarPanel;
 import org.example.gui.client.panels.listElements.carPanel.ReservedCarPanel;
 import org.example.gui.shared.panels.ScrollCenterPanel;

@@ -3,6 +3,7 @@ package org.example.gui.client.panels.listElements.carPanel;
 
 import javax.swing.*;
 import org.example.gui.client.dialogs.RentConfirmationDialog;
+import org.example.gui.shared.panels.listElements.CarPanel;
 
 public class ReservedCarPanel extends CarPanel {
     public ReservedCarPanel(String carBrand, String carModel, String carYear) {

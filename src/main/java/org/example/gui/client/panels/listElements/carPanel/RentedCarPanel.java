@@ -1,6 +1,7 @@
 package org.example.gui.client.panels.listElements.carPanel;
 
 import org.example.gui.client.dialogs.ReturnConfirmationDialog;
+import org.example.gui.shared.panels.listElements.CarPanel;
 
 import javax.swing.*;
 

@@ -2,9 +2,9 @@ package org.example.gui.client.panels.listElements.carPanel;
 
 import org.example.gui.client.dialogs.RentConfirmationDialog;
 import org.example.gui.client.dialogs.ReservationConfirmationDialog;
+import org.example.gui.shared.panels.listElements.CarPanel;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class AvailableCarPanel extends CarPanel {
     private final JButton rentButton;

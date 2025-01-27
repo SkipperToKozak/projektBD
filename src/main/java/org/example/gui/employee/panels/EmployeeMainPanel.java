@@ -17,7 +17,8 @@ public class EmployeeMainPanel extends JFrame {
     private CardLayout cardLayout;
     private EmployeeAvailableCarsListPanel availableCarsListPanel = new EmployeeAvailableCarsListPanel();
     private JGradientButton addCarButton;
-//    private RentedCarPanel rentedCarPanel;
+    private AllClientsListPanel allClientsListPanel = new AllClientsListPanel();
+
     public EmployeeMainPanel(String username) {
         super();
         setTitle("Panel główny");
@@ -76,6 +77,7 @@ public class EmployeeMainPanel extends JFrame {
         add(centerPanel, BorderLayout.CENTER);
 
         centerPanel.add(availableCarsListPanel, "availableCarsListPanel");
+        centerPanel.add(allClientsListPanel, "allClientsListPanel");
 
 
 ////        allClientsPanel = new AllClientsPanel();
@@ -95,7 +97,8 @@ public class EmployeeMainPanel extends JFrame {
 //            revalidate();
         });
         clientsButton.addActionListener(e -> {
-
+            allClientsListPanel = new AllClientsListPanel();
+            cardLayout.show(centerPanel, "allClientsListPanel");
 //            repaint();
 //            revalidate();
         });
