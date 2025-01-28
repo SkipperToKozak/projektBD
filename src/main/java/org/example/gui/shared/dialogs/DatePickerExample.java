@@ -16,7 +16,7 @@ public class DatePickerExample extends JPanel {
     private JFormattedTextField textField;
 
     public DatePickerExample() {
-        setSize(400, 200);
+//        setSize(400, 200);
         setLayout(new FlowLayout());
 
         // Utwórz model dla JDatePicker

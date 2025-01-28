@@ -11,29 +11,29 @@ import java.awt.*;
 
 public class AddCarDialog extends JDialog
 {
-    private JLabel brandLabel = new JLabel("Marka");
-    private JTextField brandField = new JTextField();
-    private JLabel modelLabel = new JLabel("Model");
-    private JTextField modelField = new JTextField();
-    private JLabel idLabel = new JLabel("Numer rejestracyjny");
-    private JTextField idField = new JTextField();
-    private JLabel yearLabel = new JLabel("Rok produkcji");
-    private JTextField yearField = new JTextField();
-    private JLabel statusLabel = new JLabel("Status");
-    private JTextField statusField = new JTextField();
-    private JLabel colorLabel = new JLabel("Kolor");
-    private JTextField colorField = new JTextField();
-    private JLabel seatsLabel = new JLabel("Ilość miejsc");
-    private JTextField seatsField = new JTextField();
-    private JLabel horsePowerLabel = new JLabel("Moc");
-    private JTextField horsePowerField = new JTextField();
-    private JLabel mileageLabel = new JLabel("Przebieg");
-    private JTextField mileageField = new JTextField();
-    private JLabel dateOfServiceLabel = new JLabel("Data ostatniego przegladu");
-    private JTextField dateOfServiceField = new JTextField();
-    private DatePickerExample datePicker = new DatePickerExample();
-    private JButton confirmButton = new JButton("Potwierdź");
-    private JButton cancelButton = new JButton("Anuluj");
+    protected JLabel brandLabel = new JLabel("Marka");
+    protected JTextField brandField = new JTextField();
+    protected JLabel modelLabel = new JLabel("Model");
+    protected JTextField modelField = new JTextField();
+    protected JLabel idLabel = new JLabel("Numer rejestracyjny");
+    protected JTextField idField = new JTextField();
+    protected JLabel yearLabel = new JLabel("Rok produkcji");
+    protected JTextField yearField = new JTextField();
+    protected JLabel statusLabel = new JLabel("Status");
+    protected JComboBox statusField = new JComboBox();
+    protected JLabel colorLabel = new JLabel("Kolor");
+    protected JTextField colorField = new JTextField();
+    protected JLabel seatsLabel = new JLabel("Ilość miejsc");
+    protected JTextField seatsField = new JTextField();
+    protected JLabel horsePowerLabel = new JLabel("Moc");
+    protected JTextField horsePowerField = new JTextField();
+    protected JLabel mileageLabel = new JLabel("Przebieg");
+    protected JTextField mileageField = new JTextField();
+    protected JLabel dateOfServiceLabel = new JLabel("Data ostatniego przegladu");
+//    protected JTextField dateOfServiceField = new JTextField();
+    protected DatePickerExample datePicker = new DatePickerExample();
+    protected JButton confirmButton = new JButton("Dodaj");
+    protected JButton cancelButton = new JButton("Anuluj");
 
 
 
@@ -42,10 +42,11 @@ public class AddCarDialog extends JDialog
     {
         setTitle("Dodaj samochód");
 
-        setVisible(true);
+
         setSize(new Dimension(500,500));
         setLocationRelativeTo(null);
         setResizable(false);
+        setModal(true);
 
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{200, 200};
@@ -90,6 +91,9 @@ public class AddCarDialog extends JDialog
 
         gbc.gridx = 1;
         gbc.gridy = 4;
+        statusField.addItem("dostepny");
+        statusField.addItem("usuniety");
+        statusField.addItem("zablokowany");
         add(statusField, gbc);
 
         gbc.gridx = 0;
