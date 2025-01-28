@@ -1,10 +1,15 @@
 package org.example.dao;
 
+import org.example.model.Car;
+import java.util.List;
+
 public interface CarDAO {
-    void addCar(Car car);
-    Car getCarById(int id); // Placeholder, can be customized
-    void updateCar(Car car);
-    void deleteCar(Car car);
-    void blockCar(String nrRejestracyjny);
-    void updateCarTechnicalState(Car car, java.sql.Date date);
+    boolean addCar(Car car);
+    Car getCarById(String id);
+    boolean updateCar(Car car);
+    boolean deleteCar(Car car);
+    boolean blockCar(Car car);
+    boolean updateCarTechnicalState(Car car, java.sql.Date date);
+    List<Car> showCars();
+    List<Car> clientShowCars();
 }

@@ -6,9 +6,9 @@ import java.sql.*;
 public class DatabaseConnection {
     public static Connection getConnection() {
         try {
-            String url = "jdbc:mysql://localhost:3306/rentalsystem";
-            String username = "root";
-            String password = "password";
+            String url = "jdbc:postgresql://localhost:5432/bdComplete";
+            String username = "postgres";
+            String password = "haslo";
             return DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             e.printStackTrace();
