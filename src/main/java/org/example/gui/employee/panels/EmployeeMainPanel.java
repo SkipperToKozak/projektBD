@@ -22,7 +22,9 @@ public class EmployeeMainPanel extends JFrame {
 
     public EmployeeMainPanel(String username) {
         super();
-        setTitle("Panel główny");
+
+        setTitle("Pracownik - Panel główny");
+
         setMinimumSize(new Dimension(1000, 600));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -105,6 +107,9 @@ public class EmployeeMainPanel extends JFrame {
         });
         addCarButton.addActionListener(e -> {
             AddCarDialog addCarDialog = new AddCarDialog();
+
+            addCarDialog.setVisible(true);
+
 //            addCarDialog.setVisible(true);
 //            addCarDialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 //            addCarDialog.setSize(400, 300);
