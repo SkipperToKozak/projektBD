@@ -16,16 +16,20 @@ public class ClientMainPanel extends JFrame {
     private JPanel centerPanel;
     private CardLayout cardLayout;
     private ClientAvailableCarsListPanel clientAvailableCarsListPanel;
+
     private JPanel currentCarPanel;
     private RentedCarPanel rentedCarPanel;
     private ClientAccountPanel clientAccountPanel;
+
 //    private JPanel currentCarPanel;
     private MyCarsPanel myCarsPanel;
 
     public ClientMainPanel(String username) {
+
         setTitle("Klient - Panel główny");
         setSize(800, 600);
         setMinimumSize(new Dimension(1000, 600));
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
@@ -84,6 +88,7 @@ public class ClientMainPanel extends JFrame {
         myCarsPanel = new MyCarsPanel();
         centerPanel.add(myCarsPanel, "myCarsPanel");
 
+
         clientAccountPanel = new ClientAccountPanel("Jan", "Kowalski", "12345678901");
         centerPanel.add(clientAccountPanel, "clientAccountPanel");
 
@@ -106,6 +111,7 @@ public class ClientMainPanel extends JFrame {
 //            repaint();
 //            revalidate();
         });
+
         myAccountButton.addActionListener(e -> {
             clientAccountPanel = new ClientAccountPanel("Jan", "Kowalski", "12345678901");
             cardLayout.show(centerPanel, "clientAccountPanel");

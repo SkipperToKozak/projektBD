@@ -11,6 +11,7 @@ import java.awt.*;
 
 public class AddCarDialog extends JDialog
 {
+
     protected JLabel brandLabel = new JLabel("Marka");
     protected JTextField brandField = new JTextField();
     protected JLabel modelLabel = new JLabel("Model");
@@ -38,6 +39,7 @@ public class AddCarDialog extends JDialog
 
 
 
+
     public AddCarDialog()
     {
         setTitle("Dodaj samochód");
@@ -47,6 +49,7 @@ public class AddCarDialog extends JDialog
         setLocationRelativeTo(null);
         setResizable(false);
         setModal(true);
+
 
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{200, 200};
@@ -91,9 +94,11 @@ public class AddCarDialog extends JDialog
 
         gbc.gridx = 1;
         gbc.gridy = 4;
+
         statusField.addItem("dostepny");
         statusField.addItem("usuniety");
         statusField.addItem("zablokowany");
+
         add(statusField, gbc);
 
         gbc.gridx = 0;

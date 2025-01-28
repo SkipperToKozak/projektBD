@@ -1,7 +1,9 @@
 package org.example.gui.employee.panels.listElements;
 
+
 import org.example.gui.employee.dialogs.ClientCarsListDialog;
 import org.example.gui.employee.panels.ClientCarsListPanel;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +13,9 @@ public class ClientInfoPanel extends JPanel {
     private JLabel surnameLabel;
     private JLabel PESELLabel;
     private JPanel buttonPanel;
+
     private JButton detailsButton;
+
 
 
     public ClientInfoPanel(String name, String surname, String PESEL) {
@@ -48,6 +52,7 @@ public class ClientInfoPanel extends JPanel {
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 0));
         add(buttonPanel, gbc);
 
+
         buttonPanel.setBackground(new Color(251, 179, 105, 255));
         detailsButton = new JButton("Szczegóły");
         buttonPanel.add(detailsButton);
@@ -55,6 +60,7 @@ public class ClientInfoPanel extends JPanel {
             ClientCarsListDialog dialog = new ClientCarsListDialog();
             dialog.setVisible(true);
         });
+
         // Ustaw preferowany rozmiar (opcjonalnie)
         setPreferredSize(new Dimension(300, 60));
 
