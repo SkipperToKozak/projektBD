@@ -1,8 +1,13 @@
 package org.example.dao;
 
+import org.example.model.User;
+
+import java.util.List;
+
 public interface UserDAO {
     void addUser(User user);
-    User getUserById(int id); // Placeholder, can be customized
+    User getUserByLogin(String login);
     void updateUser(User user);
-    void deleteUser(int id);  // Placeholder, implement delete logic as needed
+    void deleteUser(int id);
+    List<User> getClients();
 }

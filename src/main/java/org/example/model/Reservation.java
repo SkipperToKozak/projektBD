@@ -1,25 +1,32 @@
 package org.example.model;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
 
 public class Reservation {
-    private String id;
+    private int id;
     private String carId;
-    private String userId;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private String userLogin;
+    private Date startDate;
+    private Date endDate;
+    private String status;
 
-    public Reservation(String carId, String userId, LocalDateTime startDate) {
+    public Reservation(String carId, String userLogin, Date startDate) {
         this.carId = carId;
-        this.userId = userId;
+        this.userLogin = userLogin;
         this.startDate = startDate;
     }
 
-    public String getId() {
+    public Reservation(int id, String carId, String status, String userLogin) {
+        this.id = id;
+        this.carId = carId;
+        this.userLogin = userLogin;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -31,27 +38,35 @@ public class Reservation {
         this.carId = carId;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUserLogin() {
+        return userLogin;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
     }
 
-    public LocalDateTime getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

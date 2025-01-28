@@ -1,11 +1,21 @@
 package org.example.dao;
 
+import org.example.model.Car;
+import org.example.model.Reservation;
+import org.example.model.User;
+
+import java.util.List;
+
 public interface ReservationDAO {
-    void addReservation(Reservation reservation);
+    boolean addReservation(Reservation reservation);
     Reservation getReservationById(int id); // Placeholder, can be customized
-    void updateReservation(Reservation reservation);
-    void deleteReservation(Reservation reservation);
-    void rentCar(Car car, User user);
-    void reserveCar(Car car, User user);
-    void returnCar(Car car, User user);
+    Reservation getClientReservationById(User client, int id);
+    Reservation getClientRentalById(User client, int id);
+    boolean updateReservation(Reservation reservation);
+    boolean cancelReservation(Reservation reservation);
+    boolean rentCar(Car car, User user);
+    boolean reserveCar(Car car, User user);
+    boolean returnCar(Car car, User user);
+    List<Reservation> getClientReservations(User client);
+    List<Reservation> getClientRentals(User client);
 }

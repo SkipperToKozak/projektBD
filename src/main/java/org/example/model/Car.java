@@ -1,6 +1,6 @@
 package org.example.model;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class Car {
     private String id;
@@ -11,11 +11,10 @@ public class Car {
     private int seatAmount;
     private int horsePower;
     private int mileage;
-    private boolean available;
     private String status;
-    private LocalDate lastCarInspection;
+    private Date lastCarInspection;
 
-    public Car(String id, String brand, String model, int productionYear, String color, int seatAmount, int horsePower, int mileage, LocalDate lastCarInspection) {
+    public Car(String id, String brand, String model, int productionYear, String color, int seatAmount, int horsePower, int mileage, String status, Date lastCarInspection) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -24,9 +23,20 @@ public class Car {
         this.seatAmount = seatAmount;
         this.horsePower = horsePower;
         this.mileage = mileage;
-        this.available = true;
-        this.status = "Zdolny do jazdy";
+        this.status = status;
         this.lastCarInspection = lastCarInspection;
+    }
+
+    public Car(String id, String brand, String model, int productionYear, String color,  String status, int seatAmount, int horsePower, int mileage) {
+        this.id = id;
+        this.brand = brand;
+        this.model = model;
+        this.productionYear = productionYear;
+        this.color = color;
+        this.seatAmount = seatAmount;
+        this.horsePower = horsePower;
+        this.mileage = mileage;
+        this.status = status;
     }
 
     public String getId() {
@@ -51,14 +61,6 @@ public class Car {
 
     public void setProductionYear(int productionYear) {
         this.productionYear = productionYear;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
-
-    public boolean isAvailable() {
-        return available;
     }
 
     public String getStatus() {
@@ -109,11 +111,11 @@ public class Car {
         this.mileage = mileage;
     }
 
-    public LocalDate getLastCarInspection() {
+    public Date getLastCarInspection() {
         return lastCarInspection;
     }
 
-    public void setLastCarInspection(LocalDate lastCarInspection) {
+    public void setLastCarInspection(Date lastCarInspection) {
         this.lastCarInspection = lastCarInspection;
     }
 }

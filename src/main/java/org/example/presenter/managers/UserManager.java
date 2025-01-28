@@ -1,4 +1,7 @@
-package org.example.model.managers;
+package org.example.presenter.managers;
+
+import org.example.dao.UserDAO;
+import org.example.dao.UserDAOImpl;
 
 public class UserManager {
     private final UserDAO userDAO;
@@ -9,7 +12,7 @@ public class UserManager {
 
     public boolean showClients() {
         try {
-            userDAO.showClients();
+            userDAO.getClients();
             return true;
         } catch (Exception e) {
             return false;
