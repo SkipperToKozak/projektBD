@@ -1,5 +1,6 @@
 package org.example.gui.employee.panels;
 
+import org.example.gui.employee.dialogs.AddCarDialog;
 import org.example.gui.shared.buttons.JGradientButton;
 
 import javax.swing.*;
@@ -101,6 +102,16 @@ public class EmployeeMainPanel extends JFrame {
             cardLayout.show(centerPanel, "allClientsListPanel");
 //            repaint();
 //            revalidate();
+        });
+        addCarButton.addActionListener(e -> {
+            AddCarDialog addCarDialog = new AddCarDialog();
+//            addCarDialog.setVisible(true);
+//            addCarDialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//            addCarDialog.setSize(400, 300);
+//            addCarDialog.setLocationRelativeTo(null);
+//            addCarDialog.setResizable(true);
+//            addCarDialog.setAlwaysOnTop(true);
+//            addCarDialog.setModal(true);
         });
 
 
