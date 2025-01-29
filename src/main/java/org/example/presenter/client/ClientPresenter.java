@@ -21,20 +21,22 @@ public class ClientPresenter {
     private ClientAvailableCarsListPanel clientAvailableCarsListPanel;
     private MyCarsPanel myCarsPanel;
     private ClientAccountPanel myAccountPanel;
+
     public ClientPresenter() {
         SwingUtilities.invokeLater(() -> {
             view = new ClientMainPanel(username);
             initListeners();
         });
-        //todo invoke later moze naprawic bledy
 
 
     }
 
     private void initListeners() {
+
         this.view.setAvailableCarsButtonListener(e -> onAvailableCarsButtonClicked());
         this.view.setMyCarsButtonListener(e -> onMyCarsButtonClicked());
         this.view.setMyAccountButtonListener(e -> onMyAccountButtonClicked());
+
     }
 
     private void onAvailableCarsButtonClicked() {
@@ -78,6 +80,9 @@ public class ClientPresenter {
             myAccountPanel.getPeselLabel().setText("PESEL: " + user.getPesel());
 
 
+    }
+    private void onRentButtonClicked() {
+        //TODO
     }
 
 }

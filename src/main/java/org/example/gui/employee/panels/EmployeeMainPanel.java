@@ -122,8 +122,10 @@ public class EmployeeMainPanel extends JFrame {
     public void showAvailableCarsPanel() {
         carsListPanel = new EmployeeCarsListPanel();
         cardLayout.show(centerPanel, "availableCarsListPanel");
-        repaint();
-        revalidate();
+        centerPanel.revalidate();
+        centerPanel.repaint();
+        this.revalidate();
+        this.repaint();
     }
 
     public AllClientsListPanel getAllClientsListPanel() {
@@ -137,8 +139,10 @@ public class EmployeeMainPanel extends JFrame {
     public void showAllClientsPanel() {
         allClientsListPanel = new AllClientsListPanel();
         cardLayout.show(centerPanel, "allClientsListPanel");
-        repaint();
-        revalidate();
+        centerPanel.revalidate();
+        centerPanel.repaint();
+        this.revalidate();
+        this.repaint();
     }
 
     public void setAddCarButtonListener(ActionListener listener) {
