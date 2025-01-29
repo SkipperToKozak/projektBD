@@ -1,7 +1,6 @@
 package org.example.gui.client.panels;
 
 import org.example.gui.client.panels.listElements.carPanel.RentedCarPanel;
-import org.example.model.Car;
 
 import javax.swing.*;
 import java.awt.*;
@@ -142,9 +141,11 @@ public class ClientMainPanel extends JFrame {
 //        clientAvailableCarsListPanel = new ClientAvailableCarsListPanel();
 //        revalidate();
 //        repaint();
-
-        clientAvailableCarsListPanel = new ClientAvailableCarsListPanel();
         cardLayout.show(centerPanel, "clientAvailableCarsListPanel");
+        centerPanel.revalidate();
+        centerPanel.repaint();
+        this.revalidate();
+        this.repaint();
     }
     public void showMyCarsPanel() {
         revalidate();
@@ -152,8 +153,12 @@ public class ClientMainPanel extends JFrame {
         cardLayout.show(centerPanel, "myCarsPanel");
     }
 
-    public ClientAvailableCarsListPanel getAvailableCarsListPanel() {
+    public ClientAvailableCarsListPanel getClientAvailableCarsListPanel() {
         return clientAvailableCarsListPanel;
+    }
+
+    public void setClientAvailableCarsListPanel(ClientAvailableCarsListPanel clientAvailableCarsListPanel) {
+        this.clientAvailableCarsListPanel = clientAvailableCarsListPanel;
     }
 
     public MyCarsPanel getMyCarsPanel() {

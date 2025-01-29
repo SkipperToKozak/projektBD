@@ -6,15 +6,15 @@ import org.example.gui.client.panels.ClientMainPanel;
 import org.example.gui.client.panels.MyCarsPanel;
 import org.example.gui.client.panels.listElements.carPanel.AvailableCarPanel;
 import org.example.gui.client.panels.listElements.carPanel.HistoryCarPanel;
-import org.example.gui.shared.panels.listElements.CarPanel;
-import org.example.model.User;
 import org.example.presenter.shared.managers.CarManager;
 import org.example.presenter.shared.managers.ReservationManager;
 import org.example.presenter.shared.managers.UserManager;
 
+import javax.swing.*;
+
 public class ClientPresenter {
     private final String username = "jan_kowalski";
-    private ClientMainPanel view = new ClientMainPanel(username);
+    private ClientMainPanel view;
     private final CarManager carManager = new CarManager();
     private final ReservationManager reservationManager = new ReservationManager();
     private final UserManager userManager = new UserManager();
@@ -22,17 +22,25 @@ public class ClientPresenter {
     private MyCarsPanel myCarsPanel;
     private ClientAccountPanel myAccountPanel;
     public ClientPresenter() {
+        SwingUtilities.invokeLater(() -> {
+            view = new ClientMainPanel(username);
+            initListeners();
+        });
         //todo invoke later moze naprawic bledy
+
+
+    }
+
+    private void initListeners() {
         this.view.setAvailableCarsButtonListener(e -> onAvailableCarsButtonClicked());
         this.view.setMyCarsButtonListener(e -> onMyCarsButtonClicked());
         this.view.setMyAccountButtonListener(e -> onMyAccountButtonClicked());
-
     }
+
     private void onAvailableCarsButtonClicked() {
         // Pobranie panelu z widoku (jeśli istnieje)
-        clientAvailableCarsListPanel = view.getAvailableCarsListPanel();
-
-        // Czyszczenie starej listy, żeby nie dublować elementów
+        clientAvailableCarsListPanel = view.getClientAvailableCarsListPanel();
+        clientAvailableCarsListPanel.getListPanel().removeAll();
 
 
         // Pobranie dostępnych samochodów
@@ -45,7 +53,6 @@ public class ClientPresenter {
             );
             System.out.println("Dodano: " + car.getBrand() + " " + car.getId());
         }
-        clientAvailableCarsListPanel.clearCarPanels();
 
         // Wymuszenie odświeżenia widoku
         view.showAvailableCarsPanel();
