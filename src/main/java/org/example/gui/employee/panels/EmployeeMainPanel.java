@@ -120,7 +120,6 @@ public class EmployeeMainPanel extends JFrame {
     }
 
     public void showAvailableCarsPanel() {
-        carsListPanel = new EmployeeCarsListPanel();
         cardLayout.show(centerPanel, "availableCarsListPanel");
         centerPanel.revalidate();
         centerPanel.repaint();
@@ -137,7 +136,6 @@ public class EmployeeMainPanel extends JFrame {
     }
 
     public void showAllClientsPanel() {
-        allClientsListPanel = new AllClientsListPanel();
         cardLayout.show(centerPanel, "allClientsListPanel");
         centerPanel.revalidate();
         centerPanel.repaint();
