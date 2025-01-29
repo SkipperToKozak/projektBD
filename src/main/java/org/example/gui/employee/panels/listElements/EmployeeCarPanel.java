@@ -6,6 +6,7 @@ import org.example.gui.shared.panels.listElements.CarPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class EmployeeCarPanel extends CarPanel {
@@ -46,12 +47,11 @@ public class EmployeeCarPanel extends CarPanel {
         });
 
         unblockButton.addActionListener(e -> {
-            setStatus("dostepny");
-            updateStatus();
+
         });
 
     }
-    private void updateStatus(){
+    public void updateStatus(){
         if (Objects.equals(status, "zablokowany")) {
             //jesli status jest zablokowany
             setBackground(Color.RED);
@@ -70,7 +70,17 @@ public class EmployeeCarPanel extends CarPanel {
             updateButton.setEnabled(false);
             deleteButton.setEnabled(false);
 
-
+        }
+        else if (Objects.equals(status, "usuniety")) {
+            //jesli status jest dostepny
+            blockButton.setEnabled(true);
+            setBackground(Color.DARK_GRAY);
+            setLabelsForeground(Color.WHITE);
+            buttonPanel.setBackground(Color.DARK_GRAY);
+            buttonPanel.setForeground(Color.WHITE);
+            unblockButton.setEnabled(false);
+            updateButton.setEnabled(false);
+            deleteButton.setEnabled(false);
 
         } else {//jesli status jest dostepny
             blockButton.setEnabled(true);
@@ -88,5 +98,18 @@ public class EmployeeCarPanel extends CarPanel {
     public void setStatus(String status) {
         this.status = status;
     }
+    public void setUpdateButtonListener(ActionListener listener) {
+        updateButton.addActionListener(listener);
+    }
+    public void setBlockButtonListener(ActionListener listener) {
+        blockButton.addActionListener(listener);
+    }
+    public void setUnblockButtonListener(ActionListener listener) {
+        unblockButton.addActionListener(listener);
+    }
+    public void setDeleteButtonListener(ActionListener listener) {
+        deleteButton.addActionListener(listener);
+    }
+
 
 }
