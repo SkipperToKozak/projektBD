@@ -1,6 +1,8 @@
 package org.example.gui.client.panels.listElements.carPanel;
 
 import org.example.gui.shared.panels.listElements.CarPanel;
+import org.example.model.Car;
+import org.example.model.Reservation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,8 +13,8 @@ public class HistoryCarPanel extends CarPanel {
     private JLabel returnDateLabel;
     private String returnDate;
 
-    public HistoryCarPanel(String carBrand, String carModel, String carYear, String rentDate, String returnDate) {
-        super(carBrand, carModel, carYear);
+    public HistoryCarPanel(Car car, Reservation reservation){
+        super(car);
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 10, 5, 10);
         gbc.gridx = 0;

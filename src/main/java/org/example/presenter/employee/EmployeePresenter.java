@@ -1,7 +1,5 @@
 package org.example.presenter.employee;
 
-import org.example.gui.client.panels.ClientMainPanel;
-import org.example.gui.client.panels.listElements.carPanel.AvailableCarPanel;
 import org.example.gui.employee.dialogs.AddCarDialog;
 import org.example.gui.employee.panels.AllClientsListPanel;
 import org.example.gui.employee.panels.EmployeeCarsListPanel;
@@ -47,7 +45,7 @@ public class EmployeePresenter {
 
         var carList = carManager.getCars();
         for (Car car : carList) {
-            EmployeeCarPanel employeeCarPanel = new EmployeeCarPanel(car.getBrand(), car.getModel(), String.valueOf(car.getProductionYear()), car.getStatus());
+            EmployeeCarPanel employeeCarPanel = new EmployeeCarPanel(car);
             employeeCarPanel.setBlockButtonListener(e -> onBlockButtonClicked(car, employeeCarPanel));
             employeeCarPanel.setUnblockButtonListener(e -> onUnblockButtonClicked(car, employeeCarPanel));
             employeeCarPanel.setDeleteButtonListener(e -> onDeleteButtonClicked(car, employeeCarPanel));

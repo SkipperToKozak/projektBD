@@ -3,6 +3,7 @@ package org.example.gui.client.panels.listElements.carPanel;
 import org.example.gui.client.dialogs.RentConfirmationDialog;
 import org.example.gui.client.dialogs.ReservationConfirmationDialog;
 import org.example.gui.shared.panels.listElements.CarPanel;
+import org.example.model.Car;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -12,8 +13,8 @@ public class AvailableCarPanel extends CarPanel {
     private final JButton reserveButton;
     private final JButton showDetails;
     private RentConfirmationDialog rentConfirmationDialog;
-    public AvailableCarPanel(String carBrand, String carModel, String carYear) {
-        super(carBrand, carModel, carYear);
+    public AvailableCarPanel(Car car) {
+        super(car);
         rentButton = new JButton("Wypożycz");
         reserveButton = new JButton("Rezerwuj");
         showDetails = new JButton("Szczegóły");

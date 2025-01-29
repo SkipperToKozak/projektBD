@@ -53,7 +53,7 @@ public class ClientPresenter {
 
         // Dodanie samochodów do panelu
         for (var car : carList) {
-            AvailableCarPanel availableCarPanel = new AvailableCarPanel(car.getBrand(), car.getModel(), String.valueOf(car.getProductionYear()));
+            AvailableCarPanel availableCarPanel = new AvailableCarPanel(car);
             availableCarPanel.setRentButtonListener(e -> onRentButtonClicked(car, availableCarPanel));
             availableCarPanel.setReserveButtonListener(e -> onReserveButtonClicked(car, availableCarPanel));
             clientAvailableCarsListPanel.addCarPanel(availableCarPanel);
@@ -72,7 +72,7 @@ public class ClientPresenter {
         for (var reservation : reservationList) {
 //            System.out.println(reservation.getCarId());
             var car = carManager.getCarByID("ABC123");
-            myCarsPanel.addCarPanel(new HistoryCarPanel(car.getBrand(), car.getModel(), String.valueOf(car.getProductionYear()), reservation.getStartDate().toString(), reservation.getEndDate().toString()));
+            myCarsPanel.addCarPanel(new HistoryCarPanel(car, reservation));
         }
         view.showMyCarsPanel();
     }

@@ -1,8 +1,8 @@
 package org.example.gui.employee.panels.listElements;
 
-import org.example.gui.client.dialogs.ReturnConfirmationDialog;
 import org.example.gui.employee.dialogs.UpdateCarDialog;
 import org.example.gui.shared.panels.listElements.CarPanel;
+import org.example.model.Car;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,8 +19,8 @@ public class EmployeeCarPanel extends CarPanel {
 
     private String status;
 
-    public EmployeeCarPanel(String carBrand, String carModel, String carYear, String status) {
-        super(carBrand, carModel, carYear);
+    public EmployeeCarPanel(Car car) {
+        super(car);
         this.status = status;
 
         deleteButton = new JButton("Usuń");
@@ -41,14 +41,15 @@ public class EmployeeCarPanel extends CarPanel {
             updateCarDialog.setVisible(true);
         });
 
-        blockButton.addActionListener(e -> {
-            setStatus("zablokowany");
-            updateStatus();
-        });
+//        blockButton.addActionListener(e -> {
+//            setStatus("zablokowany");
+//            updateStatus();
+//        });
 
-        unblockButton.addActionListener(e -> {
-
-        });
+//        unblockButton.addActionListener(e -> {
+//
+//
+//        });
 
     }
     public void updateStatus(){
@@ -73,19 +74,21 @@ public class EmployeeCarPanel extends CarPanel {
         }
         else if (Objects.equals(status, "usuniety")) {
             //jesli status jest dostepny
-            blockButton.setEnabled(true);
+
             setBackground(Color.DARK_GRAY);
             setLabelsForeground(Color.WHITE);
             buttonPanel.setBackground(Color.DARK_GRAY);
             buttonPanel.setForeground(Color.WHITE);
+            blockButton.setEnabled(false);
             unblockButton.setEnabled(false);
             updateButton.setEnabled(false);
             deleteButton.setEnabled(false);
 
         } else {//jesli status jest dostepny
-            blockButton.setEnabled(true);
+
             setBackground(Color.GREEN);
             buttonPanel.setBackground(Color.GREEN);
+            blockButton.setEnabled(true);
             unblockButton.setEnabled(false);
             updateButton.setEnabled(false);
             deleteButton.setEnabled(false);

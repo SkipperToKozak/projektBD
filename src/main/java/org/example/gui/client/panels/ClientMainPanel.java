@@ -1,10 +1,12 @@
 package org.example.gui.client.panels;
 
 import org.example.gui.client.panels.listElements.carPanel.RentedCarPanel;
+import org.example.model.Car;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 
 public class ClientMainPanel extends JFrame {
     private JPanel actionsPanel;
@@ -93,7 +95,8 @@ public class ClientMainPanel extends JFrame {
         clientAccountPanel = new ClientAccountPanel("", "", "");
         centerPanel.add(clientAccountPanel, "clientAccountPanel");
 
-        rentedCarPanel = new RentedCarPanel("Polonez", "Caro", "1989");
+        rentedCarPanel = new RentedCarPanel(new Car("DW122", "Polonez", "Caro", 1982,"szary",
+                5, 50, 100, "wypozyczony", new Date(2021, 5, 5)));
         centerPanel.add(rentedCarPanel, "rentedCarPanel");
         cardLayout.show(centerPanel, "rentedCarPanel");
 
