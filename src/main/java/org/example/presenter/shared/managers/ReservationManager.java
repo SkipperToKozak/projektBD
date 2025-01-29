@@ -1,4 +1,4 @@
-package org.example.presenter.managers;
+package org.example.presenter.shared.managers;
 
 import org.example.dao.*;
 import org.example.model.Reservation;
@@ -6,7 +6,6 @@ import org.example.model.User;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class ReservationManager {
     private final ReservationDAO reservationDAO;

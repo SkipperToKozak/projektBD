@@ -1,12 +1,10 @@
-package org.example.presenter.managers;
+package org.example.presenter.shared.managers;
 
 import org.example.dao.CarDAO;
 import org.example.dao.CarDAOImpl;
 import org.example.model.Car;
 
 import java.sql.Date;
-import java.sql.SQLException;
-import java.time.LocalDate;
 
 public class CarManager {
     private final CarDAO carDAO;

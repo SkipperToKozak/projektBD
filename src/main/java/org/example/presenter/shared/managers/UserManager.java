@@ -1,4 +1,4 @@
-package org.example.presenter.managers;
+package org.example.presenter.shared.managers;
 
 import org.example.dao.UserDAO;
 import org.example.dao.UserDAOImpl;
