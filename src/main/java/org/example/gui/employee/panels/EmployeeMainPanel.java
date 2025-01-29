@@ -71,8 +71,6 @@ public class EmployeeMainPanel extends JFrame {
         myAccountButton = new JButton("Moje konto");
         accountPanel.add(myAccountButton, gbc_myAccountButton);
 
-
-
         northPanel.add(accountPanel);
 
         cardLayout = new CardLayout();
@@ -90,10 +88,9 @@ public class EmployeeMainPanel extends JFrame {
 //        centerPanel.add(rentedCarPanel, "rentedCarPanel");
 //        cardLayout.show(centerPanel, "rentedCarPanel");
 
-        addCarButton.addActionListener(e -> {
-            AddCarDialog addCarDialog = new AddCarDialog();
-
-            addCarDialog.setVisible(true);
+//        addCarButton.addActionListener(e -> {
+//            AddCarDialog addCarDialog = new AddCarDialog();
+//            addCarDialog.setVisible(true);
 
 //            addCarDialog.setVisible(true);
 //            addCarDialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -102,7 +99,7 @@ public class EmployeeMainPanel extends JFrame {
 //            addCarDialog.setResizable(true);
 //            addCarDialog.setAlwaysOnTop(true);
 //            addCarDialog.setModal(true);
-        });
+//        });
 
     }
     public void addCarPanel(JPanel panel) {
@@ -142,6 +139,14 @@ public class EmployeeMainPanel extends JFrame {
         cardLayout.show(centerPanel, "allClientsListPanel");
         repaint();
         revalidate();
+    }
+
+    public void setAddCarButtonListener(ActionListener listener) {
+        addCarButton.addActionListener(listener);
+    }
+
+    public AddCarDialog getAddCarDialog() {
+        return new AddCarDialog();
     }
 }
 
