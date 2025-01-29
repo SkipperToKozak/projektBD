@@ -32,7 +32,6 @@ public class CarDAOImpl implements CarDAO {
             cs.setInt(7, car.getSeatAmount());
             cs.setInt(8, car.getHorsePower());
             cs.setInt(9, car.getMileage());
-            cs.setDate(10, car.getLastCarInspection());
             cs.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -84,6 +83,19 @@ public class CarDAOImpl implements CarDAO {
 
     public boolean blockCar(Car car) {
         String sql = "call zablokuj_samochod(?)";
+        try (CallableStatement cs = connection.prepareCall(sql)) {
+            cs.setString(1, car.getId());
+            cs.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean unblockCar(Car car) {
+        String sql = "call odblokuj_samochod(?)";
         try (CallableStatement cs = connection.prepareCall(sql)) {
             cs.setString(1, car.getId());
             cs.execute();

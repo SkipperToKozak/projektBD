@@ -166,7 +166,6 @@ public class AddCarDialog extends JDialog
 
     public void setConfirmAddCarButtonListener(ActionListener listener) {
         confirmButton.addActionListener(listener);
-        dispose();
     }
 
     public JTextField getBrandField() {
