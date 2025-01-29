@@ -83,6 +83,7 @@ public class ClientPresenter {
             } else {
                 ReservedCarPanel reservedCarPanel = new ReservedCarPanel(car, reservation);
                 myCarsPanel.addCarPanel(reservedCarPanel);
+                reservedCarPanel.setReserveButtonListener(e -> onRentButtonClicked(car, reservedCarPanel));
             }
         }
         for (var rent : rentList) {
@@ -91,8 +92,8 @@ public class ClientPresenter {
             if (Objects.equals(rent.getStatus(), "zakonczone")) {
                 myCarsPanel.addCarPanel(new HistoryCarPanel(car, rent));
             } else {
-                RentedCarPanel reservedCarPanel = new RentedCarPanel(car, rent);
-                myCarsPanel.addCarPanel(reservedCarPanel);
+                RentedCarPanel rentedCarPanel = new RentedCarPanel(car, rent);
+                myCarsPanel.addCarPanel(rentedCarPanel);
             }
         }
         view.showMyCarsPanel();
@@ -112,6 +113,14 @@ public class ClientPresenter {
         dialog.setCancelRentButtonListener(e -> dialog.dispose());
         dialog.setVisible(true);
     }
+
+    private void onRentButtonClicked(Car car, ReservedCarPanel reservedCarPanel) {
+        RentConfirmationDialog dialog = new RentConfirmationDialog(car);
+        dialog.setConfirmRentButtonListener(e -> onConfirmRentButtonClicked(car, reservedCarPanel));
+        dialog.setCancelRentButtonListener(e -> dialog.dispose());
+        dialog.setVisible(true);
+    }
+
     private void onConfirmRentButtonClicked(Car car, AvailableCarPanel availableCarPanel) {
         //zmiana statusu samochodu na wypozyczony
         //sprawdzenie czy udalo sie wypozyyczyc
@@ -120,6 +129,16 @@ public class ClientPresenter {
         if (rentalManager.rentCar(car, username)) {
             System.out.println("Wypożyczono: " + car.getBrand() + " " + car.getId());
             availableCarPanel.setVisible(false);
+        } else {
+
+        }
+    }
+
+    private void onConfirmRentButtonClicked(Car car, ReservedCarPanel rentedCarPanel) {
+        rentedCarPanel.setVisible(false);
+        if (rentalManager.rentCar(car, username)) {
+            System.out.println("Wypożyczono: " + car.getBrand() + " " + car.getId());
+            rentedCarPanel.setVisible(false);
         } else {
 
         }
