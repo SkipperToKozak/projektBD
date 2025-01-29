@@ -23,10 +23,12 @@ public class CarManager {
         return carDAO.getCarById(id);
     }
 
-    public boolean updateCar(String id, String status) {
+    public boolean updateCar(String id, String status,String color, int mileage) {
         var car = getCarByID(id);
         //TODO: dopisac kolor i przebieg i date
         car.setStatus(status);
+        car.setColor(color);
+        car.setMileage(mileage);
         return carDAO.updateCar(car);
     }
 

@@ -9,6 +9,7 @@ import org.example.gui.client.panels.MyCarsPanel;
 import org.example.gui.client.panels.listElements.carPanel.AvailableCarPanel;
 import org.example.gui.client.panels.listElements.carPanel.HistoryCarPanel;
 import org.example.model.Car;
+import org.example.model.User;
 import org.example.presenter.shared.managers.CarManager;
 import org.example.presenter.shared.managers.ReservationManager;
 import org.example.presenter.shared.managers.UserManager;
@@ -70,8 +71,8 @@ public class ClientPresenter {
         var rentList  = reservationManager.getClientRentals(username);
 
         for (var reservation : reservationList) {
-//            System.out.println(reservation.getCarId());
-            var car = carManager.getCarByID("ABC123");
+            var car = carManager.getCarByID(reservation.getCarId());
+            System.out.println("Wyswietlono na liscie: " + car.getId());
             myCarsPanel.addCarPanel(new HistoryCarPanel(car, reservation));
         }
         view.showMyCarsPanel();
@@ -87,17 +88,21 @@ public class ClientPresenter {
     }
     private void onRentButtonClicked(Car car, AvailableCarPanel availableCarPanel) {
         RentConfirmationDialog dialog = new RentConfirmationDialog(car);
-        dialog.setConfirmRentButtonListener(e -> onConfirmRentButtonClicked(car, availableCarPanel));
+        dialog.setConfirmRentButtonListener(e -> onConfirmRentButtonClicked(car, availableCarPanel, "jan_kowalski"));
         dialog.setCancelRentButtonListener(e -> dialog.dispose());
         dialog.setVisible(true);
     }
-    private void onConfirmRentButtonClicked(Car car, AvailableCarPanel availableCarPanel) {
+    private void onConfirmRentButtonClicked(Car car, AvailableCarPanel availableCarPanel, String login) {
         //zmiana statusu samochodu na wypozyczony
         //sprawdzenie czy udalo sie wypozyyczyc
         //jesli tak to usuniecie panelu z listy
         availableCarPanel.setVisible(false);
-//wywolanie metody na wypozyczenie
-        System.out.println("Wypożyczono: " + car.getBrand() + " " + car.getId());
+        if (reservationManager.rentCar(car.getId(), login)) {
+            System.out.println("Wypożyczono: " + car.getBrand() + " " + car.getId());
+            availableCarPanel.setVisible(false);
+        } else {
+
+        }
     }
 
     private void onReserveButtonClicked(Car car, AvailableCarPanel availableCarPanel) {
@@ -113,8 +118,12 @@ public class ClientPresenter {
         //sprawdzenie czy udalo sie zarezerwowac
         //jesli tak to usuniecie panelu z listy
         availableCarPanel.setVisible(false);
-//wywolanie metody na zarezerwowanie
-        System.out.println("Zarezerwowano: " + car.getBrand() + " " + car.getId());
+        if (reservationManager.reserveCar(car.getId(), "jan_kowalski")) {
+            System.out.println("Zarezerwowano: " + car.getBrand() + " " + car.getId());
+
+        } else {
+
+        }
     }
 
 

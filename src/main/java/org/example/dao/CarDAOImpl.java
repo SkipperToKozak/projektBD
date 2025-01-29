@@ -47,7 +47,7 @@ public class CarDAOImpl implements CarDAO {
             return null;
         }
 
-        return cars.stream()
+        return  cars.stream()
                 .filter(car -> Objects.equals(car.getId(), id))
                 .findFirst()
                 .orElse(null);
