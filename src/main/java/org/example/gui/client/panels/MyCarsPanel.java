@@ -21,11 +21,15 @@ public class MyCarsPanel extends ScrollCenterPanel {
 
     public void addCarPanel(ReservedCarPanel reservedCarPanel) {
         listPanel.add(reservedCarPanel);
+        listPanel.revalidate();
+        listPanel.repaint();
         System.out.println("Dodano samchód do listy");
     }
 
     public void addCarPanel(RentedCarPanel rentedCarPanel) {
         listPanel.add(rentedCarPanel);
+        listPanel.revalidate();
+        listPanel.repaint();
         System.out.println("Dodano samchód do listy");
     }
 }

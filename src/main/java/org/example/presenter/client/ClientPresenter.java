@@ -85,8 +85,9 @@ public class ClientPresenter {
                 myCarsPanel.addCarPanel(new HistoryCarPanel(car, reservation));
             } else {
                 ReservedCarPanel reservedCarPanel = new ReservedCarPanel(car, reservation);
-                myCarsPanel.addCarPanel(reservedCarPanel);
                 reservedCarPanel.setReserveButtonListener(e -> onRentButtonClicked(car, reservedCarPanel));
+                myCarsPanel.addCarPanel(reservedCarPanel);
+
             }
         }
         for (var rent : rentList) {
@@ -96,6 +97,7 @@ public class ClientPresenter {
                 myCarsPanel.addCarPanel(new HistoryCarPanel(car, rent));
             } else {
                 RentedCarPanel rentedCarPanel = new RentedCarPanel(car, rent);
+                rentedCarPanel.setReturnButtonListener(e -> onReturnButtonClicked(car, rentedCarPanel));
                 myCarsPanel.addCarPanel(rentedCarPanel);
             }
         }
@@ -120,6 +122,12 @@ public class ClientPresenter {
     private void onRentButtonClicked(Car car, ReservedCarPanel reservedCarPanel) {
         RentConfirmationDialog dialog = new RentConfirmationDialog(car);
         dialog.setConfirmRentButtonListener(e -> onConfirmRentButtonClicked(car, reservedCarPanel));
+        dialog.setCancelRentButtonListener(e -> dialog.dispose());
+        dialog.setVisible(true);
+    }
+    private void onReturnButtonClicked(Car car, RentedCarPanel rentedCarPanel) {
+        RentConfirmationDialog dialog = new RentConfirmationDialog(car);
+        dialog.setConfirmRentButtonListener(e -> onConfirmReturnButtonClicked(car, rentedCarPanel));
         dialog.setCancelRentButtonListener(e -> dialog.dispose());
         dialog.setVisible(true);
     }
@@ -151,6 +159,17 @@ public class ClientPresenter {
 
 
     }
+    private void onConfirmReturnButtonClicked(Car car, RentedCarPanel rentedCarPanel) {
+        //zmiana statusu samochodu na zwrócony
+        //sprawdzenie czy udalo sie zwrocic
+        //jesli tak to usuniecie panelu z listy
+        rentedCarPanel.setVisible(false);
+        if (rentalManager.returnCar(car.getId(), username)) {
+            System.out.println("Zwrócono: " + car.getBrand() + " " + car.getId());
+            rentedCarPanel.setVisible(false);
+        }
+    }
+
     private void onConfirmReserveButtonClicked(Car car, AvailableCarPanel availableCarPanel) {
         //zmiana statusu samochodu na zarezerwowany
         //sprawdzenie czy udalo sie zarezerwowac
