@@ -29,6 +29,8 @@ public class EmployeePresenter {
         SwingUtilities.invokeLater(() -> {
             view = new EmployeeMainPanel("Test");
             initListeners();
+            onCarsButtonClicked();
+
         });
 
     }

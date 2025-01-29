@@ -82,6 +82,7 @@ public class EmployeeMainPanel extends JFrame {
         centerPanel.add(carsListPanel, "availableCarsListPanel");
         centerPanel.add(allClientsListPanel, "allClientsListPanel");
 
+
 ////        allClientsPanel = new AllClientsPanel();
 //        centerPanel.add(myCarsPanel, "myCarsPanel");
 //
