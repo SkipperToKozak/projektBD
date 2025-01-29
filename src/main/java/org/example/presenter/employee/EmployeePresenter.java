@@ -19,7 +19,7 @@ import java.sql.Date;
 
 public class EmployeePresenter {
     private EmployeeMainPanel view;
-    private AddCarDialog addCarDialog = new AddCarDialog();
+    private AddCarDialog addCarDialog;
     private final CarManager carManager = new CarManager();
     private final ReservationManager reservationManager = new ReservationManager();
     private final UserManager userManager = new UserManager();
@@ -38,7 +38,6 @@ public class EmployeePresenter {
         this.view.setCarsButtonListener(e -> onCarsButtonClicked());
         this.view.setClientsButtonListener(e -> onClientsButtonClicked());
         this.view.setAddCarButtonListener(e -> onAddCarButtonClicked());
-        this.addCarDialog.setConfirmAddCarButtonListener(e -> onConfirmAddButton());
     }
 
     private void onCarsButtonClicked() {
@@ -65,23 +64,30 @@ public class EmployeePresenter {
 
     private void onAddCarButtonClicked() {
         addCarDialog = view.getAddCarDialog();
+        addCarDialog.setConfirmAddCarButtonListener(e -> onConfirmAddButton());
         addCarDialog.setVisible(true);
     }
 
     private void onConfirmAddButton() {
-        String carId = String.valueOf(addCarDialog.getIdField());
-        String brand = String.valueOf(addCarDialog.getBrandField());
-        String model = String.valueOf(addCarDialog.getModelField());
-        int productionYear = Integer.parseInt(String.valueOf(addCarDialog.getYearField()));
-        String status = String.valueOf(addCarDialog.getStatusField());
-        String color = String.valueOf(addCarDialog.getColorField());
-        int seatAmount = Integer.parseInt(String.valueOf(addCarDialog.getSeatsField()));
-        int horsePower = Integer.parseInt(String.valueOf(addCarDialog.getHorsePowerField()));
-        int mileage = Integer.parseInt(String.valueOf(addCarDialog.getMileageField()));
-        Date date = Date.valueOf(String.valueOf(addCarDialog.getDatePicker()));
+        System.out.println("Przycisk został kliknięty!"); // Sprawdzenie działania
+
+        String carId = addCarDialog.getIdField().getText();
+        String brand = addCarDialog.getBrandField().getText();
+        String model = addCarDialog.getModelField().getText();
+        int productionYear = Integer.parseInt(addCarDialog.getYearField().getText());
+        String status = (String) addCarDialog.getStatusField().getSelectedItem();
+        String color = addCarDialog.getColorField().getText();
+        int seatAmount = Integer.parseInt(addCarDialog.getSeatsField().getText());
+        int horsePower = Integer.parseInt(addCarDialog.getHorsePowerField().getText());
+        int mileage = Integer.parseInt(addCarDialog.getMileageField().getText());
+//        java.sql.Date date = java.sql.Date.valueOf(addCarDialog.getDatePicker().get);
+        Date date = null;
 
         if (carManager.addCar(carId, brand, model, productionYear, color, seatAmount, horsePower, mileage, status, date)) {
             System.out.println("WTF");
+            onCarsButtonClicked(); // Odświeżenie listy samochodów po dodaniu nowego auta
+            addCarDialog.dispose();
+
         } else {
             System.out.println("Not this time");
         }

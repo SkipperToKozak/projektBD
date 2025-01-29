@@ -32,7 +32,6 @@ public class CarDAOImpl implements CarDAO {
             cs.setInt(7, car.getSeatAmount());
             cs.setInt(8, car.getHorsePower());
             cs.setInt(9, car.getMileage());
-            cs.setDate(10, car.getLastCarInspection());
             cs.execute();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -20,6 +20,7 @@ public class EmployeeMainPanel extends JFrame {
     private EmployeeCarsListPanel carsListPanel = new EmployeeCarsListPanel();
     private JGradientButton addCarButton;
     private AllClientsListPanel allClientsListPanel = new AllClientsListPanel();
+    private AddCarDialog addCarDialog = new AddCarDialog();
 
     public EmployeeMainPanel(String username) {
         super();
@@ -150,7 +151,7 @@ public class EmployeeMainPanel extends JFrame {
     }
 
     public AddCarDialog getAddCarDialog() {
-        return new AddCarDialog();
+        return addCarDialog;
     }
 }
 
