@@ -1,13 +1,11 @@
 package org.example.gui.employee.dialogs;
 
 //import org.example.gui.shared.dialogs.DatePicker;
-import org.example.gui.shared.dialogs.Dialog;
-import org.jdatepicker.JDatePicker;
-import org.jdatepicker.impl.JDatePickerImpl;
 import org.example.gui.shared.dialogs.DatePickerExample;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class AddCarDialog extends JDialog
 {
@@ -156,9 +154,9 @@ public class AddCarDialog extends JDialog
 
 
 
-        confirmButton.addActionListener(e -> {
-            dispose();
-        });
+//        confirmButton.addActionListener(e -> {
+//            dispose();
+//        });
         cancelButton.addActionListener(e -> {
             dispose();
         });
@@ -166,4 +164,48 @@ public class AddCarDialog extends JDialog
 
     }
 
+    public void setConfirmAddCarButtonListener(ActionListener listener) {
+        confirmButton.addActionListener(listener);
+        dispose();
+    }
+
+    public JTextField getBrandField() {
+        return brandField;
+    }
+
+    public JTextField getModelField() {
+        return modelField;
+    }
+
+    public JTextField getIdField() {
+        return idField;
+    }
+
+    public JTextField getYearField() {
+        return yearField;
+    }
+
+    public JComboBox getStatusField() {
+        return statusField;
+    }
+
+    public JTextField getColorField() {
+        return colorField;
+    }
+
+    public JTextField getSeatsField() {
+        return seatsField;
+    }
+
+    public JTextField getMileageField() {
+        return mileageField;
+    }
+
+    public DatePickerExample getDatePicker() {
+        return datePicker;
+    }
+
+    public JTextField getHorsePowerField() {
+        return horsePowerField;
+    }
 }

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.CallableStatement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.example.model.Car;
 
@@ -31,6 +32,7 @@ public class CarDAOImpl implements CarDAO {
             cs.setInt(7, car.getSeatAmount());
             cs.setInt(8, car.getHorsePower());
             cs.setInt(9, car.getMileage());
+            cs.setDate(10, car.getLastCarInspection());
             cs.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -47,7 +49,7 @@ public class CarDAOImpl implements CarDAO {
         }
 
         return cars.stream()
-                .filter(car -> car.getId() == id)
+                .filter(car -> Objects.equals(car.getId(), id))
                 .findFirst()
                 .orElse(null);
     }
@@ -112,7 +114,6 @@ public class CarDAOImpl implements CarDAO {
 
         try (CallableStatement cs = connection.prepareCall(sql);
              ResultSet rs = cs.executeQuery()) {
-
             while (rs.next()) {
                 Car car = new Car(
                         rs.getString("nr_rejestracyjny"),
@@ -120,10 +121,11 @@ public class CarDAOImpl implements CarDAO {
                         rs.getString("model"),
                         rs.getInt("rok_produkcji"),
                         rs.getString("kolor"),
-                        rs.getString("status_samochodu"),
                         rs.getInt("liczba_miejsc"),
                         rs.getInt("moc_silnika"),
-                        rs.getInt("przebieg")
+                        rs.getInt("przebieg"),
+                        rs.getString("status_samochodu"),
+                        rs.getDate("data_ostatniego_przegladu")
                 );
                 cars.add(car);
             }
@@ -148,10 +150,11 @@ public class CarDAOImpl implements CarDAO {
                         rs.getString("model"),
                         rs.getInt("rok_produkcji"),
                         rs.getString("kolor"),
-                        rs.getString("status_samochodu"),
                         rs.getInt("liczba_miejsc"),
                         rs.getInt("moc_silnika"),
-                        rs.getInt("przebieg")
+                        rs.getInt("przebieg"),
+                        rs.getString("status_samochodu"),
+                        rs.getDate("data_ostatniego_przegladu")
                 );
                 cars.add(car);
             }

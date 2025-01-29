@@ -2,6 +2,7 @@ package org.example.gui.employee.panels;
 
 import org.example.gui.client.panels.listElements.carPanel.AvailableCarPanel;
 
+import org.example.gui.employee.panels.listElements.EmployeeCarPanel;
 import org.example.gui.shared.panels.ScrollCenterPanel;
 
 public class EmployeeCarsListPanel extends ScrollCenterPanel {
@@ -30,7 +31,7 @@ public class EmployeeCarsListPanel extends ScrollCenterPanel {
 
     }
 
-    public void addCarPanel(AvailableCarPanel carPanel) {
+    public void addCarPanel(EmployeeCarPanel carPanel) {
         listPanel.add(carPanel);
     }
 
