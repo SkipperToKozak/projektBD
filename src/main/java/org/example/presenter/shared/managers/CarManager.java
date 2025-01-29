@@ -5,6 +5,7 @@ import org.example.dao.CarDAOImpl;
 import org.example.model.Car;
 
 import java.sql.Date;
+import java.util.List;
 
 public class CarManager {
     private final CarDAO carDAO;
@@ -39,12 +40,8 @@ public class CarManager {
         return carDAO.blockCar(car);
     }
 
-    public boolean showCars() {
-        try {
-            carDAO.showCars();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    public List<Car> showCars() {
+            return carDAO.showCars();
+
     }
 }

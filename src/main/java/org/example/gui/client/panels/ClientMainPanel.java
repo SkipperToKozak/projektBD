@@ -4,6 +4,7 @@ import org.example.gui.client.panels.listElements.carPanel.RentedCarPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class ClientMainPanel extends JFrame {
     private JPanel actionsPanel;
@@ -99,12 +100,7 @@ public class ClientMainPanel extends JFrame {
 
 //        repaint();
 //        revalidate();
-        availableCarsButton.addActionListener(e -> {
-            clientAvailableCarsListPanel = new ClientAvailableCarsListPanel();
-            cardLayout.show(centerPanel, "clientAvailableCarsListPanel");
-//            repaint();
-//            revalidate();
-        });
+
         myCarsButton.addActionListener(e -> {
             myCarsPanel = new MyCarsPanel();
             cardLayout.show(centerPanel, "myCarsPanel");
@@ -131,7 +127,19 @@ public class ClientMainPanel extends JFrame {
     public JPanel getCenterPanel() {
         return centerPanel;
     }
+    public void setAvailableCarsButtonListener(ActionListener listener) {
 
+        availableCarsButton.addActionListener(listener);
+    }
+    public void showAvailableCarsPanel() {
+//        clientAvailableCarsListPanel = new ClientAvailableCarsListPanel();
+        revalidate();
+        repaint();
+        cardLayout.show(centerPanel, "clientAvailableCarsListPanel");
+    }
 
+    public ClientAvailableCarsListPanel getClientAvailableCarsListPanel() {
+        return clientAvailableCarsListPanel;
+    }
 }
 

@@ -9,23 +9,18 @@ import org.example.gui.shared.panels.ScrollCenterPanel;
 public class ClientAvailableCarsListPanel extends ScrollCenterPanel {
     public ClientAvailableCarsListPanel() {
         super();
-        listPanel.add(new CarPanel("KLIENT", "A4", "2010"));
-        listPanel.add(new CarPanel("KLIENT", "X5", "2015"));
-        listPanel.add(new CarPanel("Mercedes", "S500", "2018"));
-        listPanel.add(new CarPanel("Toyota", "Corolla", "2012"));
-        listPanel.add(new CarPanel("Ford", "Focus", "2019"));
-        listPanel.add(new CarPanel("Opel", "Astra", "2017"));
-        listPanel.add(new CarPanel("Volkswagen", "Passat", "2016"));
-        listPanel.add(new CarPanel("Skoda", "Octavia", "2014"));
-        listPanel.add(new CarPanel("Fiat", "Punto", "2013"));
-        listPanel.add(new CarPanel("Renault", "Clio", "2011"));
-        listPanel.add(new CarPanel("Peugeot", "308", "2010"));
-        listPanel.add(new CarPanel("Ford", "Focus", "2019"));
-        listPanel.add(new CarPanel("Opel", "Astra", "2017"));
-        listPanel.add(new CarPanel("Volkswagen", "Passat", "2016"));
-        listPanel.add(new CarPanel("Skoda", "Octavia", "2014"));
-        listPanel.add(new RentedCarPanel("Fiat", "Punto", "2013"));
-        listPanel.add(new AvailableCarPanel("Renault", "Clio", "2011"));
-        listPanel.add(new ReservedCarPanel("Peugeot", "308", "2010"));
+        addCarPanel(new AvailableCarPanel("Renault", "Clio", "2011"));
+//        listPanel.add(new CarPanel("KLIENT", "A4", "2010"));
+//        listPanel.add(new CarPanel("KLIENT", "X5", "2015"));
+//        listPanel.add(new RentedCarPanel("Fiat", "Punto", "2013"));
+//        listPanel.add(new AvailableCarPanel("Renault", "Clio", "2011"));
+//        listPanel.add(new ReservedCarPanel("Peugeot", "308", "2010"));
+    }
+    public void addCarPanel(AvailableCarPanel carPanel) {
+        listPanel.add(carPanel);
+        listPanel.add(new AvailableCarPanel("Admin", "Clio", "2011"));
+        revalidate();
+        repaint();
+        System.out.println("Dodano samochód do listy");
     }
 }
