@@ -17,15 +17,17 @@ import java.sql.Date;
 
 public class EmployeePresenter {
     private EmployeeMainPanel view;
+    private User user;
     private final CarManager carManager = new CarManager();
     private final ReservationManager reservationManager = new ReservationManager();
     private final UserManager userManager = new UserManager();
     private EmployeeCarsListPanel carsListPanel;
     private AllClientsListPanel clientListPanel;
 
-    public EmployeePresenter() {
+    public EmployeePresenter(User user) {
+        this.user = user;
         SwingUtilities.invokeLater(() -> {
-            view = new EmployeeMainPanel("Test");
+            view = new EmployeeMainPanel(user.getLogin());
             initListeners();
             onCarsButtonClicked();
 

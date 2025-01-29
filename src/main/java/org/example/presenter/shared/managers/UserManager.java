@@ -21,8 +21,8 @@ public class UserManager {
         return userDAO.getUserByLogin(login);
     }
 
-    public boolean addClient() {
-        return false;
+    public void addClient(User user) {
+        userDAO.addUser(user);
     }
 
     public boolean addEmployee() {

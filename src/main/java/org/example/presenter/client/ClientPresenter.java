@@ -22,7 +22,8 @@ import javax.swing.*;
 import java.util.Objects;
 
 public class ClientPresenter {
-    private final String username = "jan_kowalski";
+    private User user;
+    private String username;
     private ClientMainPanel view;
     private final CarManager carManager = new CarManager();
     private final ReservationManager reservationManager = new ReservationManager();
@@ -32,7 +33,9 @@ public class ClientPresenter {
     private MyCarsPanel myCarsPanel;
     private ClientAccountPanel myAccountPanel;
 
-    public ClientPresenter() {
+    public ClientPresenter(User user) {
+        this.user = user;
+        this.username = user.getLogin();
         SwingUtilities.invokeLater(() -> {
             view = new ClientMainPanel(username);
             initListeners();
