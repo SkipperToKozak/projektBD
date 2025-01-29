@@ -19,6 +19,7 @@ public class Reservation {
     public Reservation(int id, String carId, String status, String userLogin) {
         this.id = id;
         this.carId = carId;
+        this.status = status;
         this.userLogin = userLogin;
     }
 

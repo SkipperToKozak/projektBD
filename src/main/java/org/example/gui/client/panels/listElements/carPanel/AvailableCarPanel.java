@@ -11,17 +11,13 @@ import java.awt.event.ActionListener;
 public class AvailableCarPanel extends CarPanel {
     private final JButton rentButton;
     private final JButton reserveButton;
-    private final JButton showDetails;
     private RentConfirmationDialog rentConfirmationDialog;
     public AvailableCarPanel(Car car) {
         super(car);
         rentButton = new JButton("Wypożycz");
         reserveButton = new JButton("Rezerwuj");
-        showDetails = new JButton("Szczegóły");
         buttonPanel.add(reserveButton);
         buttonPanel.add(rentButton);
-        buttonPanel.add(showDetails);
-
 
 
     }

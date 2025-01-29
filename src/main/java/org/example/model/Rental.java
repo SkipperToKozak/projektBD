@@ -13,6 +13,7 @@ public class Rental {
     public Rental(int id, String carId, String status, String userLogin) {
         this.id = id;
         this.carId = carId;
+        this.status = status;
         this.userLogin = userLogin;
     }
 

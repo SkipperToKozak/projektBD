@@ -34,16 +34,26 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User getUserByLogin(String login) {
         var clients = getClients();
-        if (clients == null || clients.isEmpty()) {
-            return null;
-        }
+        var employees = getEmployees();
 
-        //Zwraca klienta o pierwszym znalezionym loginie klienta
-        return clients.stream()
-                    .filter(client -> Objects.equals(client.getLogin(), login))
+        //Zwraca klienta lub pracownika o pierwszym znalezionym loginie
+        var client = clients.stream()
+                    .filter(cli -> Objects.equals(cli.getLogin(), login))
                     .findFirst()
                     .orElse(null);
+
+        var employee = employees.stream()
+                .filter(emp -> Objects.equals(emp.getLogin(), login))
+                .findFirst()
+                .orElse(null);
+
+        if (client != null) {
+            return client;
+        } else {
+            return employee;
+        }
     }
+
 
     @Override
     public void updateUser(User user) {
@@ -68,7 +78,7 @@ public class UserDAOImpl implements UserDAO {
                             rs.getString("haslo"),
                             rs.getString("nazwisko"),
                             rs.getString("imie"),
-                            "klient",
+                            "client",
                             rs.getString("pesel")
                     );
                     clients.add(client);
@@ -78,5 +88,29 @@ public class UserDAOImpl implements UserDAO {
             e.printStackTrace();
         }
         return clients;
+    }
+
+    public List<User> getEmployees() {
+        List<User> employees = new ArrayList<>();
+        String sql = "select * from pracownicy";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    var employee = new User(
+                            rs.getString("login"),
+                            rs.getString("haslo"),
+                            rs.getString("nazwisko"),
+                            rs.getString("imie"),
+                            "employee",
+                            rs.getString("pesel")
+                    );
+                    employees.add(employee);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return employees;
     }
 }

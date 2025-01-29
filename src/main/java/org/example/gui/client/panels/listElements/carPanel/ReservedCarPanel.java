@@ -5,9 +5,10 @@ import javax.swing.*;
 import org.example.gui.client.dialogs.RentConfirmationDialog;
 import org.example.gui.shared.panels.listElements.CarPanel;
 import org.example.model.Car;
+import org.example.model.Reservation;
 
 public class ReservedCarPanel extends CarPanel {
-    public ReservedCarPanel(Car car) {
+    public ReservedCarPanel(Car car, Reservation reservation) {
         super(car);
         JButton returnButton = new JButton("Wypożycz");
 //        returnButton.addActionListener(e -> {
@@ -18,6 +19,8 @@ public class ReservedCarPanel extends CarPanel {
 
 
         buttonPanel.add(returnButton);
+
+        carStatusLabel.setText("Status rezerwacji: " + reservation.getStatus());
 
 
     }

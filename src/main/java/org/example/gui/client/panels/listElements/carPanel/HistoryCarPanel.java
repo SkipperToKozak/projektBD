@@ -2,6 +2,7 @@ package org.example.gui.client.panels.listElements.carPanel;
 
 import org.example.gui.shared.panels.listElements.CarPanel;
 import org.example.model.Car;
+import org.example.model.Rental;
 import org.example.model.Reservation;
 
 import javax.swing.*;
@@ -20,10 +21,26 @@ public class HistoryCarPanel extends CarPanel {
         gbc.insets = new Insets(5, 10, 5, 10);
         gbc.gridx = 0;
         gbc.gridy = 2;
-        rentDateLabel = new JLabel("Data wypożyczenia: " + rentDate);
+        rentDateLabel = new JLabel("Data wypożyczenia: " + reservation.getStartDate());
         add(rentDateLabel, gbc);
         gbc.gridx = 1;
-        returnDateLabel = new JLabel("Data zwrotu: " + returnDate);
+        returnDateLabel = new JLabel("Data zwrotu: " + reservation.getEndDate());
         add(returnDateLabel, gbc);
+        carStatusLabel.setText("Status rezerwacji: " + reservation.getStatus());
+    }
+
+    public HistoryCarPanel(Car car, Rental rental) {
+        super(car);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 10, 5, 10);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        rentDateLabel = new JLabel("Data wypożyczenia: " + rental.getStartDate());
+        add(rentDateLabel, gbc);
+        gbc.gridx = 1;
+        returnDateLabel = new JLabel("Data zwrotu: " + rental.getEndDate());
+        add(returnDateLabel, gbc);
+        carStatusLabel.setText("Status wypożyczenia: " + rental.getStatus());
     }
 }

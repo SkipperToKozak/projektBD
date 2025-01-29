@@ -8,7 +8,10 @@ import org.example.gui.client.panels.ClientMainPanel;
 import org.example.gui.client.panels.MyCarsPanel;
 import org.example.gui.client.panels.listElements.carPanel.AvailableCarPanel;
 import org.example.gui.client.panels.listElements.carPanel.HistoryCarPanel;
+import org.example.gui.client.panels.listElements.carPanel.RentedCarPanel;
+import org.example.gui.client.panels.listElements.carPanel.ReservedCarPanel;
 import org.example.model.Car;
+import org.example.model.Reservation;
 import org.example.model.User;
 import org.example.presenter.shared.managers.CarManager;
 import org.example.presenter.shared.managers.RentalManager;
@@ -16,6 +19,7 @@ import org.example.presenter.shared.managers.ReservationManager;
 import org.example.presenter.shared.managers.UserManager;
 
 import javax.swing.*;
+import java.util.Objects;
 
 public class ClientPresenter {
     private final String username = "jan_kowalski";
@@ -33,8 +37,6 @@ public class ClientPresenter {
             view = new ClientMainPanel(username);
             initListeners();
         });
-
-
     }
 
     private void initListeners() {
@@ -76,12 +78,22 @@ public class ClientPresenter {
         for (var reservation : reservationList) {
             var car = carManager.getCarByID(reservation.getCarId());
             System.out.println("Wyswietlono na liscie: " + car.getId());
-            myCarsPanel.addCarPanel(new HistoryCarPanel(car, reservation));
+            if (Objects.equals(reservation.getStatus(), "zakonczona")) {
+                myCarsPanel.addCarPanel(new HistoryCarPanel(car, reservation));
+            } else {
+                ReservedCarPanel reservedCarPanel = new ReservedCarPanel(car, reservation);
+                myCarsPanel.addCarPanel(reservedCarPanel);
+            }
         }
         for (var rent : rentList) {
             var car = carManager.getCarByID(rent.getCarId());
             System.out.println("Wyswietlono na liscie: " + car.getId());
-            myCarsPanel.addCarPanel(new HistoryCarPanel(car, rent));
+            if (Objects.equals(rent.getStatus(), "zakonczone")) {
+                myCarsPanel.addCarPanel(new HistoryCarPanel(car, rent));
+            } else {
+                RentedCarPanel reservedCarPanel = new RentedCarPanel(car, rent);
+                myCarsPanel.addCarPanel(reservedCarPanel);
+            }
         }
         view.showMyCarsPanel();
     }

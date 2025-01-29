@@ -95,10 +95,10 @@ public class ClientMainPanel extends JFrame {
         clientAccountPanel = new ClientAccountPanel("", "", "");
         centerPanel.add(clientAccountPanel, "clientAccountPanel");
 
-        rentedCarPanel = new RentedCarPanel(new Car("DW122", "Polonez", "Caro", 1982,"szary",
-                5, 50, 100, "wypozyczony", new Date(2021, 5, 5)));
-        centerPanel.add(rentedCarPanel, "rentedCarPanel");
-        cardLayout.show(centerPanel, "rentedCarPanel");
+//        rentedCarPanel = new RentedCarPanel(new Car("DW122", "Polonez", "Caro", 1982,"szary",
+//                5, 50, 100, "wypozyczony", new Date(2021, 5, 5)));
+//        centerPanel.add(rentedCarPanel, "rentedCarPanel");
+        cardLayout.show(centerPanel, "myCarsPanel");
 
 
 //        repaint();
