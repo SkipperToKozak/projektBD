@@ -21,8 +21,9 @@ public class ReservationManager {
     }
 
     public boolean addReservation(String carId, String userId) {
-        var reservation = new Reservation(carId, userId, Date.valueOf(LocalDate.now()));
-        return reservationDAO.addReservation(reservation);
+        return false; // niepotrzebne??
+//        var reservation = new Reservation(carId, userId, Date.valueOf(LocalDate.now()));
+//        return reservationDAO.addReservation(reservation);
     }
 
     public Reservation getReservationByID(int id) {
@@ -58,22 +59,6 @@ public class ReservationManager {
         }
     }
 
-    public boolean rentCar(Car car, String userLogin) {
-        var user = userDAO.getUserByLogin(userLogin);
-        return reservationDAO.rentCar(car, user);
-    }
-
-    public boolean returnCar(String carId, String clientLogin) {
-        var car = carDAO.getCarById(carId);
-        var user = userDAO.getUserByLogin(clientLogin);
-        try {
-            reservationDAO.returnCar(car, user);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
     public List<Reservation> getClientReservations(User client) {
         return reservationDAO.getClientReservations(client);
     }
@@ -81,12 +66,6 @@ public class ReservationManager {
     public List<Reservation> getClientReservations(String clientLogin) {
         var client = userDAO.getUserByLogin(clientLogin);
         return reservationDAO.getClientReservations(client);
-
-    }
-
-    public List<Reservation> getClientRentals(String clientLogin) {
-        var client = userDAO.getUserByLogin(clientLogin);
-        return reservationDAO.getClientRentals(client);
 
     }
 

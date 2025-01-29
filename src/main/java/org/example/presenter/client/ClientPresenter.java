@@ -11,6 +11,7 @@ import org.example.gui.client.panels.listElements.carPanel.HistoryCarPanel;
 import org.example.model.Car;
 import org.example.model.User;
 import org.example.presenter.shared.managers.CarManager;
+import org.example.presenter.shared.managers.RentalManager;
 import org.example.presenter.shared.managers.ReservationManager;
 import org.example.presenter.shared.managers.UserManager;
 
@@ -22,6 +23,7 @@ public class ClientPresenter {
     private final CarManager carManager = new CarManager();
     private final ReservationManager reservationManager = new ReservationManager();
     private final UserManager userManager = new UserManager();
+    private final RentalManager rentalManager = new RentalManager();
     private ClientAvailableCarsListPanel clientAvailableCarsListPanel;
     private MyCarsPanel myCarsPanel;
     private ClientAccountPanel myAccountPanel;
@@ -69,7 +71,7 @@ public class ClientPresenter {
         myCarsPanel = view.getMyCarsPanel();
         myCarsPanel.getListPanel().removeAll();
         var reservationList  = reservationManager.getClientReservations(username);
-        var rentList  = reservationManager.getClientRentals(username);
+        var rentList  = rentalManager.getClientRentals(username);
 
         for (var reservation : reservationList) {
             var car = carManager.getCarByID(reservation.getCarId());
@@ -103,7 +105,7 @@ public class ClientPresenter {
         //sprawdzenie czy udalo sie wypozyyczyc
         //jesli tak to usuniecie panelu z listy
         availableCarPanel.setVisible(false);
-        if (reservationManager.rentCar(car, username)) {
+        if (rentalManager.rentCar(car, username)) {
             System.out.println("Wypożyczono: " + car.getBrand() + " " + car.getId());
             availableCarPanel.setVisible(false);
         } else {
