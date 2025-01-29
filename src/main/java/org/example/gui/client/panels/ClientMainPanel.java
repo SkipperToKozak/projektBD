@@ -124,6 +124,7 @@ public class ClientMainPanel extends JFrame {
         repaint();
         revalidate();
     }
+
     public JPanel getCenterPanel() {
         return centerPanel;
     }

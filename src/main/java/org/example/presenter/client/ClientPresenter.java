@@ -1,5 +1,7 @@
 package org.example.presenter.client;
 
+import org.example.gui.client.dialogs.RentConfirmationDialog;
+import org.example.gui.client.dialogs.ReservationConfirmationDialog;
 import org.example.gui.client.panels.ClientAccountPanel;
 import org.example.gui.client.panels.ClientAvailableCarsListPanel;
 import org.example.gui.client.panels.ClientMainPanel;
@@ -50,9 +52,10 @@ public class ClientPresenter {
 
         // Dodanie samochodów do panelu
         for (var car : carList) {
-            clientAvailableCarsListPanel.addCarPanel(
-                    new AvailableCarPanel(car.getBrand(), car.getModel(), String.valueOf(car.getProductionYear()))
-            );
+            AvailableCarPanel availableCarPanel = new AvailableCarPanel(car.getBrand(), car.getModel(), String.valueOf(car.getProductionYear()));
+            availableCarPanel.setRentButtonListener(e -> onRentButtonClicked());
+            availableCarPanel.setReserveButtonListener(e -> onRentCarButtonClicked());
+            clientAvailableCarsListPanel.addCarPanel(availableCarPanel);
             System.out.println("Dodano: " + car.getBrand() + " " + car.getId());
         }
 
@@ -82,7 +85,13 @@ public class ClientPresenter {
 
     }
     private void onRentButtonClicked() {
-        //TODO
+            JDialog dialog = new ReservationConfirmationDialog();
+            dialog.setVisible(true);
+    }
+    private void onRentCarButtonClicked() {
+
+        JDialog dialog = new RentConfirmationDialog();
+        dialog.setVisible(true);
     }
 
 }

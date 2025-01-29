@@ -5,6 +5,7 @@ import org.example.gui.client.dialogs.ReservationConfirmationDialog;
 import org.example.gui.shared.panels.listElements.CarPanel;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 public class AvailableCarPanel extends CarPanel {
     private final JButton rentButton;
@@ -15,15 +16,15 @@ public class AvailableCarPanel extends CarPanel {
         reserveButton = new JButton("Rezerwuj");
         buttonPanel.add(reserveButton);
         buttonPanel.add(rentButton);
-        reserveButton.addActionListener(e -> {
-            JDialog dialog = new ReservationConfirmationDialog();
-            dialog.setVisible(true);
-        });
-        rentButton.addActionListener(e -> {
-            JDialog dialog = new RentConfirmationDialog();
-            dialog.setVisible(true);
-        });
 
+
+
+    }
+    public void setReserveButtonListener(ActionListener listener) {
+        reserveButton.addActionListener(listener);
+    }
+    public void setRentButtonListener(ActionListener listener) {
+        rentButton.addActionListener(listener);
     }
 
 }
