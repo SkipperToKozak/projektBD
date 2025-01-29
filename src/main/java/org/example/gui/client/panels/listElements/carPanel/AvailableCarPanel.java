@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 public class AvailableCarPanel extends CarPanel {
     private final JButton rentButton;
     private final JButton reserveButton;
+    private RentConfirmationDialog rentConfirmationDialog;
     public AvailableCarPanel(String carBrand, String carModel, String carYear) {
         super(carBrand, carModel, carYear);
         rentButton = new JButton("Wypożycz");
@@ -26,5 +27,6 @@ public class AvailableCarPanel extends CarPanel {
     public void setRentButtonListener(ActionListener listener) {
         rentButton.addActionListener(listener);
     }
+
 
 }

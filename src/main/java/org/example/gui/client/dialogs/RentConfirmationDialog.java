@@ -1,19 +1,31 @@
 package org.example.gui.client.dialogs;
 
 import org.example.gui.shared.dialogs.Dialog;
+import org.example.model.Car;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 public class RentConfirmationDialog extends Dialog {
-    public RentConfirmationDialog() {
+    private Car car;
+    private JButton confirmButton = new JButton("Potwierdź");
+    private JButton cancelButton = new JButton("Anuluj");
+    public RentConfirmationDialog(Car car) {
         super("Potwierdzenie wypożyczenia");
-        messageLabel.setText("Czy na pewno chcesz wypożyczyć ten samochód?");
-        JButton confirmButton = new JButton("Potwierdź");
-        JButton cancelButton = new JButton("Anuluj");
+
+        messageLabel.setText("Czy na pewno chcesz wypożyczyć ten samochód ("+car.getBrand()+" "+car.getModel()+" "+car.getProductionYear()+")?");
 
         buttonPanel.add(confirmButton);
         buttonPanel.add(cancelButton);
         confirmButton.addActionListener(e -> dispose());
         cancelButton.addActionListener(e -> dispose());
     }
+
+    public void setConfirmRentButtonListener(ActionListener listener) {
+        confirmButton.addActionListener(listener);
+    }
+    public void setCancelRentButtonListener(ActionListener listener) {
+        cancelButton.addActionListener(listener);
+    }
+
 }

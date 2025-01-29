@@ -9,11 +9,11 @@ public class ReservedCarPanel extends CarPanel {
     public ReservedCarPanel(String carBrand, String carModel, String carYear) {
         super(carBrand, carModel, carYear);
         JButton returnButton = new JButton("Wypożycz");
-        returnButton.addActionListener(e -> {
-            JDialog dialog = new RentConfirmationDialog();
-            dialog.setVisible(true);
-
-        });
+//        returnButton.addActionListener(e -> {
+//            JDialog dialog = new RentConfirmationDialog();
+//            dialog.setVisible(true);
+//
+//        });
 
 
         buttonPanel.add(returnButton);

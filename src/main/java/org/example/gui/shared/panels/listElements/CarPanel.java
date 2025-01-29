@@ -8,8 +8,15 @@ public class CarPanel extends JPanel {
     private JLabel carModelLabel;
     private JLabel carYearLabel;
     protected JPanel buttonPanel;
+    protected String carBrand;
+    protected String carModel;
+    protected String carYear;
+
 
     public CarPanel(String carBrand, String carModel, String carYear) {
+        this.carBrand = carBrand;
+        this.carModel = carModel;
+        this.carYear = carYear;
         carBrandLabel = new JLabel("Marka: " + carBrand);
         carModelLabel = new JLabel("Model: " + carModel);
         carYearLabel = new JLabel("Rok produkcji: " + carYear);

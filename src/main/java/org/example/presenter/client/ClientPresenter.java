@@ -8,6 +8,7 @@ import org.example.gui.client.panels.ClientMainPanel;
 import org.example.gui.client.panels.MyCarsPanel;
 import org.example.gui.client.panels.listElements.carPanel.AvailableCarPanel;
 import org.example.gui.client.panels.listElements.carPanel.HistoryCarPanel;
+import org.example.model.Car;
 import org.example.presenter.shared.managers.CarManager;
 import org.example.presenter.shared.managers.ReservationManager;
 import org.example.presenter.shared.managers.UserManager;
@@ -53,8 +54,8 @@ public class ClientPresenter {
         // Dodanie samochodów do panelu
         for (var car : carList) {
             AvailableCarPanel availableCarPanel = new AvailableCarPanel(car.getBrand(), car.getModel(), String.valueOf(car.getProductionYear()));
-            availableCarPanel.setRentButtonListener(e -> onRentButtonClicked());
-            availableCarPanel.setReserveButtonListener(e -> onRentCarButtonClicked());
+            availableCarPanel.setRentButtonListener(e -> onRentButtonClicked(car, availableCarPanel));
+            availableCarPanel.setReserveButtonListener(e -> onReserveButtonClicked(car, availableCarPanel));
             clientAvailableCarsListPanel.addCarPanel(availableCarPanel);
             System.out.println("Dodano: " + car.getBrand() + " " + car.getId());
         }
@@ -76,22 +77,45 @@ public class ClientPresenter {
         view.showMyCarsPanel();
     }
     private void onMyAccountButtonClicked() {
-         myAccountPanel = view.getClientAccountPanel();
-            var user = userManager.getClients().stream().filter(u -> u.getLogin().equals(username)).findFirst().get();
-            myAccountPanel.getNameLabel().setText("Imię: " + user.getFirstName());
-            myAccountPanel.getSurnameLabel().setText("Nazwisko: " + user.getLastName());
-            myAccountPanel.getPeselLabel().setText("PESEL: " + user.getPesel());
+        myAccountPanel = view.getClientAccountPanel();
+        var user = userManager.getClients().stream().filter(u -> u.getLogin().equals(username)).findFirst().get();
+        myAccountPanel.getNameLabel().setText("Imię: " + user.getFirstName());
+        myAccountPanel.getSurnameLabel().setText("Nazwisko: " + user.getLastName());
+        myAccountPanel.getPeselLabel().setText("PESEL: " + user.getPesel());
 
 
     }
-    private void onRentButtonClicked() {
-            JDialog dialog = new ReservationConfirmationDialog();
-            dialog.setVisible(true);
-    }
-    private void onRentCarButtonClicked() {
-
-        JDialog dialog = new RentConfirmationDialog();
+    private void onRentButtonClicked(Car car, AvailableCarPanel availableCarPanel) {
+        RentConfirmationDialog dialog = new RentConfirmationDialog(car);
+        dialog.setConfirmRentButtonListener(e -> onConfirmRentButtonClicked(car, availableCarPanel));
+        dialog.setCancelRentButtonListener(e -> dialog.dispose());
         dialog.setVisible(true);
     }
+    private void onConfirmRentButtonClicked(Car car, AvailableCarPanel availableCarPanel) {
+        //zmiana statusu samochodu na wypozyczony
+        //sprawdzenie czy udalo sie wypozyyczyc
+        //jesli tak to usuniecie panelu z listy
+        availableCarPanel.setVisible(false);
+//wywolanie metody na wypozyczenie
+        System.out.println("Wypożyczono: " + car.getBrand() + " " + car.getId());
+    }
+
+    private void onReserveButtonClicked(Car car, AvailableCarPanel availableCarPanel) {
+        ReservationConfirmationDialog dialog = new ReservationConfirmationDialog(car);
+        dialog.setReservationConfirmButtonDialogListener(e -> onConfirmReserveButtonClicked(car, availableCarPanel));
+        dialog.setReservationCancelButtonDialogListener(e -> dialog.dispose());
+        dialog.setVisible(true);
+
+
+    }
+    private void onConfirmReserveButtonClicked(Car car, AvailableCarPanel availableCarPanel) {
+        //zmiana statusu samochodu na zarezerwowany
+        //sprawdzenie czy udalo sie zarezerwowac
+        //jesli tak to usuniecie panelu z listy
+        availableCarPanel.setVisible(false);
+//wywolanie metody na zarezerwowanie
+        System.out.println("Zarezerwowano: " + car.getBrand() + " " + car.getId());
+    }
+
 
 }
