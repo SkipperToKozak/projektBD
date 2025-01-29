@@ -40,4 +40,16 @@ public class ClientAccountPanel extends JPanel {
 
         setVisible(true);
     }
+
+    public JLabel getNameLabel() {
+        return nameLabel;
+    }
+
+    public JLabel getSurnameLabel() {
+        return surnameLabel;
+    }
+
+    public JLabel getPeselLabel() {
+        return peselLabel;
+    }
 }

@@ -14,31 +14,43 @@ import org.example.presenter.shared.managers.UserManager;
 
 public class ClientPresenter {
     private final String username = "jan_kowalski";
-    private final ClientMainPanel view = new ClientMainPanel(username);
+    private ClientMainPanel view = new ClientMainPanel(username);
     private final CarManager carManager = new CarManager();
     private final ReservationManager reservationManager = new ReservationManager();
     private final UserManager userManager = new UserManager();
     private ClientAvailableCarsListPanel clientAvailableCarsListPanel;
-    private MyCarsPanel myCarsPanel = view.getMyCarsPanel();
+    private MyCarsPanel myCarsPanel;
     private ClientAccountPanel myAccountPanel;
     public ClientPresenter() {
+        //todo invoke later moze naprawic bledy
         this.view.setAvailableCarsButtonListener(e -> onAvailableCarsButtonClicked());
         this.view.setMyCarsButtonListener(e -> onMyCarsButtonClicked());
+        this.view.setMyAccountButtonListener(e -> onMyAccountButtonClicked());
 
     }
     private void onAvailableCarsButtonClicked() {
+        // Pobranie panelu z widoku (jeśli istnieje)
         clientAvailableCarsListPanel = view.getAvailableCarsListPanel();
-        var carList  = carManager.getAvailableCars();
 
-//        clientAvailableCarsListPanel.addCarPanel(new AvailableCarPanel("Renault", "Clio", "2011"));
+        // Czyszczenie starej listy, żeby nie dublować elementów
 
+
+        // Pobranie dostępnych samochodów
+        var carList = carManager.getAvailableCars();
+
+        // Dodanie samochodów do panelu
         for (var car : carList) {
-
-            clientAvailableCarsListPanel.addCarPanel(new AvailableCarPanel(car.getBrand(), car.getModel(), String.valueOf(car.getProductionYear())));
-            System.out.println(car.getBrand()+car.getId());
+            clientAvailableCarsListPanel.addCarPanel(
+                    new AvailableCarPanel(car.getBrand(), car.getModel(), String.valueOf(car.getProductionYear()))
+            );
+            System.out.println("Dodano: " + car.getBrand() + " " + car.getId());
         }
+        clientAvailableCarsListPanel.clearCarPanels();
+
+        // Wymuszenie odświeżenia widoku
         view.showAvailableCarsPanel();
     }
+
     private void onMyCarsButtonClicked() {
         myCarsPanel = view.getMyCarsPanel();
         var reservationList  = reservationManager.getClientReservations(username);
@@ -54,8 +66,9 @@ public class ClientPresenter {
     private void onMyAccountButtonClicked() {
          myAccountPanel = view.getClientAccountPanel();
             var user = userManager.getClients().stream().filter(u -> u.getLogin().equals(username)).findFirst().get();
-
-
+            myAccountPanel.getNameLabel().setText("Imię: " + user.getFirstName());
+            myAccountPanel.getSurnameLabel().setText("Nazwisko: " + user.getLastName());
+            myAccountPanel.getPeselLabel().setText("PESEL: " + user.getPesel());
 
 
     }

@@ -23,4 +23,9 @@ public class ClientAvailableCarsListPanel extends ScrollCenterPanel {
 //        repaint();
         System.out.println("Dodano samochód do listy");
     }
+    public void clearCarPanels() {
+//        this.removeAll(); // Usuwa wszystkie stare panele samochodów
+        this.revalidate(); // Wymusza przeliczenie layoutu
+        this.repaint(); // Odświeża widok
+    }
 }
