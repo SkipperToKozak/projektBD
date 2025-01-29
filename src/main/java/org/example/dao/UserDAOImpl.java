@@ -18,16 +18,31 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void addUser(User user) {
-        String sql = "call dodaj_klienta(?, ?, ?, ?, ?)";
-        try (CallableStatement cs = connection.prepareCall(sql)) {
-            cs.setString(1, user.getLogin());
-            cs.setString(2, user.getPassword()); // Note: Storing passwords in plain text is not recommended. Use hashing.
-            cs.setString(3, user.getLastName());
-            cs.setString(4, user.getFirstName());
-            cs.setString(5, user.getPesel());
-            cs.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (user.getRole() == "client") {
+            String sql = "call dodaj_klienta(?, ?, ?, ?, ?)";
+            try (CallableStatement cs = connection.prepareCall(sql)) {
+                cs.setString(1, user.getLogin());
+                cs.setString(2, user.getPassword()); // Note: Storing passwords in plain text is not recommended. Use hashing.
+                cs.setString(3, user.getLastName());
+                cs.setString(4, user.getFirstName());
+                cs.setString(5, user.getPesel());
+                cs.execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else if (user.getRole() == "employee") {
+            String sql = "INSERT INTO public.pracownicy(\n" +
+                    "    login, haslo, nazwisko, imie)\n" +
+                    "    VALUES (?, ?, ?, ?);";
+            try (CallableStatement cs = connection.prepareCall(sql)) {
+                cs.setString(1, user.getLogin());
+                cs.setString(2, user.getPassword()); // Note: Storing passwords in plain text is not recommended. Use hashing.
+                cs.setString(3, user.getLastName());
+                cs.setString(4, user.getFirstName());
+                cs.execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -103,8 +118,7 @@ public class UserDAOImpl implements UserDAO {
                             rs.getString("haslo"),
                             rs.getString("nazwisko"),
                             rs.getString("imie"),
-                            "employee",
-                            rs.getString("pesel")
+                            "employee"
                     );
                     employees.add(employee);
                 }

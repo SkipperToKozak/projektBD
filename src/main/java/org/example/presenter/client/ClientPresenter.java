@@ -2,6 +2,7 @@ package org.example.presenter.client;
 
 import org.example.gui.client.dialogs.RentConfirmationDialog;
 import org.example.gui.client.dialogs.ReservationConfirmationDialog;
+import org.example.gui.client.dialogs.ReturnConfirmationDialog;
 import org.example.gui.client.panels.ClientAccountPanel;
 import org.example.gui.client.panels.ClientAvailableCarsListPanel;
 import org.example.gui.client.panels.ClientMainPanel;
@@ -125,10 +126,11 @@ public class ClientPresenter {
         dialog.setCancelRentButtonListener(e -> dialog.dispose());
         dialog.setVisible(true);
     }
+
     private void onReturnButtonClicked(Car car, RentedCarPanel rentedCarPanel) {
-        RentConfirmationDialog dialog = new RentConfirmationDialog(car);
-        dialog.setConfirmRentButtonListener(e -> onConfirmReturnButtonClicked(car, rentedCarPanel));
-        dialog.setCancelRentButtonListener(e -> dialog.dispose());
+        var dialog = new ReturnConfirmationDialog(car);
+        dialog.setReturnConfirmButtonListener(e -> onConfirmReturnButtonClicked(car, rentedCarPanel));
+//        dialog.setCancelRentButtonListener(e -> dialog.dispose());
         dialog.setVisible(true);
     }
 
@@ -179,7 +181,7 @@ public class ClientPresenter {
             System.out.println("Zarezerwowano: " + car.getBrand() + " " + car.getId());
 
         } else {
-
+            System.out.println("Rezerwacja nie powiodla sie");
         }
     }
 

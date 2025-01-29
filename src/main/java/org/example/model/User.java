@@ -17,6 +17,14 @@ public class User {
         this.pesel = pesel;
     }
 
+    public User(String login, String password,  String lastName, String firstName, String role) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.role = role;
+    }
+
     public String getLogin() {
         return login;
     }

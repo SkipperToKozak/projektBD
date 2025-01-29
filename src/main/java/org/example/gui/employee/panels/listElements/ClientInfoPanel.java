@@ -54,12 +54,12 @@ public class ClientInfoPanel extends JPanel {
 
 
         buttonPanel.setBackground(new Color(251, 179, 105, 255));
-        detailsButton = new JButton("Szczegóły");
-        buttonPanel.add(detailsButton);
-        detailsButton.addActionListener(e -> {
-            ClientCarsListDialog dialog = new ClientCarsListDialog();
-            dialog.setVisible(true);
-        });
+//        detailsButton = new JButton("Szczegóły");
+//        buttonPanel.add(detailsButton);
+//        detailsButton.addActionListener(e -> {
+//            ClientCarsListDialog dialog = new ClientCarsListDialog();
+//            dialog.setVisible(true);
+//        });
 
         // Ustaw preferowany rozmiar (opcjonalnie)
         setPreferredSize(new Dimension(300, 60));
