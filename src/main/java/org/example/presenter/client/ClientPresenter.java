@@ -14,7 +14,7 @@ public class ClientPresenter {
     private final CarManager carManager = new CarManager();
     private final ReservationManager reservationManager = new ReservationManager();
     private final UserManager userManager = new UserManager();
-    private ClientAvailableCarsListPanel clientAvailableCarsListPanel = view.getClientAvailableCarsListPanel();
+    private ClientAvailableCarsListPanel clientAvailableCarsListPanel;
 
     public ClientPresenter() {
         this.view.setAvailableCarsButtonListener(e -> onAvailableCarsButtonClicked());
@@ -22,6 +22,7 @@ public class ClientPresenter {
 
     }
     private void onAvailableCarsButtonClicked() {
+        clientAvailableCarsListPanel = view.getClientAvailableCarsListPanel();
         var carList  = carManager.getAvailableCars();
 //        clientAvailableCarsListPanel.addCarPanel(new AvailableCarPanel("Renault", "Clio", "2011"));
         for (var car : carList) {

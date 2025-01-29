@@ -41,28 +41,15 @@ public class CarDAOImpl implements CarDAO {
 
     @Override
     public Car getCarById(String id) {
-        String sql = "SELECT * FROM cars WHERE id = ?";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, id);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    return new Car(
-                            rs.getString("nr_rejestracyjny"),
-                            rs.getString("marka"),
-                            rs.getString("model"),
-                            rs.getInt("rok_produkcji"),
-                            rs.getString("kolor"),
-                            rs.getString("status_samochodu"),
-                            rs.getInt("liczba_miejsc"),
-                            rs.getInt("moc_silnika"),
-                            rs.getInt("przebieg")
-                    );
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        var cars = getCars();
+        if (cars == null || cars.isEmpty()) {
+            return null;
         }
-        return null;
+
+        return cars.stream()
+                .filter(car -> car.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override

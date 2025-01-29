@@ -5,6 +5,7 @@ import org.example.gui.shared.buttons.JGradientButton;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class EmployeeMainPanel extends JFrame {
     private JPanel northPanel;
@@ -16,7 +17,7 @@ public class EmployeeMainPanel extends JFrame {
     private JButton myAccountButton;
     private JPanel centerPanel;
     private CardLayout cardLayout;
-    private EmployeeAvailableCarsListPanel availableCarsListPanel = new EmployeeAvailableCarsListPanel();
+    private EmployeeCarsListPanel carsListPanel = new EmployeeCarsListPanel();
     private JGradientButton addCarButton;
     private AllClientsListPanel allClientsListPanel = new AllClientsListPanel();
 
@@ -79,9 +80,8 @@ public class EmployeeMainPanel extends JFrame {
         centerPanel.setLayout(cardLayout);
         add(centerPanel, BorderLayout.CENTER);
 
-        centerPanel.add(availableCarsListPanel, "availableCarsListPanel");
+        centerPanel.add(carsListPanel, "availableCarsListPanel");
         centerPanel.add(allClientsListPanel, "allClientsListPanel");
-
 
 ////        allClientsPanel = new AllClientsPanel();
 //        centerPanel.add(myCarsPanel, "myCarsPanel");
@@ -90,21 +90,6 @@ public class EmployeeMainPanel extends JFrame {
 //        centerPanel.add(rentedCarPanel, "rentedCarPanel");
 //        cardLayout.show(centerPanel, "rentedCarPanel");
 
-
-//        repaint();
-//        revalidate();
-        availableCarsButton.addActionListener(e -> {
-            availableCarsListPanel = new EmployeeAvailableCarsListPanel();
-            cardLayout.show(centerPanel, "availableCarsListPanel");
-//            repaint();
-//            revalidate();
-        });
-        clientsButton.addActionListener(e -> {
-            allClientsListPanel = new AllClientsListPanel();
-            cardLayout.show(centerPanel, "allClientsListPanel");
-//            repaint();
-//            revalidate();
-        });
         addCarButton.addActionListener(e -> {
             AddCarDialog addCarDialog = new AddCarDialog();
 
@@ -119,10 +104,6 @@ public class EmployeeMainPanel extends JFrame {
 //            addCarDialog.setModal(true);
         });
 
-
-
-
-
     }
     public void addCarPanel(JPanel panel) {
         add(panel, BorderLayout.CENTER);
@@ -133,5 +114,34 @@ public class EmployeeMainPanel extends JFrame {
         return centerPanel;
     }
 
+    public EmployeeCarsListPanel getCarsListPanel() {
+        return carsListPanel;
+    }
 
+    public void setCarsButtonListener(ActionListener listener) {
+        availableCarsButton.addActionListener(listener);
+    }
+
+    public void showAvailableCarsPanel() {
+        carsListPanel = new EmployeeCarsListPanel();
+        cardLayout.show(centerPanel, "availableCarsListPanel");
+        repaint();
+        revalidate();
+    }
+
+    public AllClientsListPanel getAllClientsListPanel() {
+        return allClientsListPanel;
+    }
+
+    public void setClientsButtonListener(ActionListener listener) {
+        clientsButton.addActionListener(listener);
+    }
+
+    public void showAllClientsPanel() {
+        allClientsListPanel = new AllClientsListPanel();
+        cardLayout.show(centerPanel, "allClientsListPanel");
+        repaint();
+        revalidate();
+    }
 }
+
