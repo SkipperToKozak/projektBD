@@ -138,14 +138,23 @@ public class ClientMainPanel extends JFrame {
 //        clientAvailableCarsListPanel = new ClientAvailableCarsListPanel();
 //        revalidate();
 //        repaint();
+        clientAvailableCarsListPanel = new ClientAvailableCarsListPanel();
         cardLayout.show(centerPanel, "clientAvailableCarsListPanel");
     }
     public void showMyCarsPanel() {
         cardLayout.show(centerPanel, "myCarsPanel");
     }
 
-    public ClientAvailableCarsListPanel getClientAvailableCarsListPanel() {
+    public ClientAvailableCarsListPanel getAvailableCarsListPanel() {
         return clientAvailableCarsListPanel;
     }
+
+    public MyCarsPanel getMyCarsPanel() {
+        return myCarsPanel;
+    }
+    public ClientAccountPanel getClientAccountPanel() {
+        return clientAccountPanel;
+    }
+
 }
 

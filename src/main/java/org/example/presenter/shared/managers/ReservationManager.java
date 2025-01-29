@@ -4,6 +4,7 @@ import org.example.dao.*;
 import org.example.model.Reservation;
 import org.example.model.User;
 
+import java.util.List;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -68,33 +69,23 @@ public class ReservationManager {
         }
     }
 
-    public boolean showClientReservations(User client) {
-        try {
-            reservationDAO.getClientReservations(client);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    public List<Reservation> getClientReservations(User client) {
+
+           return reservationDAO.getClientReservations(client);
+
+
     }
 
-    public boolean showClientReservations(String clientLogin) {
+    public List<Reservation> getClientReservations(String clientLogin) {
         var client = userDAO.getUserByLogin(clientLogin);
-        try {
-            reservationDAO.getClientReservations(client);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+        return reservationDAO.getClientReservations(client);
+
     }
 
-    public boolean showClientRentals(String clientLogin) {
+    public List<Reservation> getClientRentals(String clientLogin) {
         var client = userDAO.getUserByLogin(clientLogin);
-        try {
-            reservationDAO.getClientRentals(client);
-            return true;
-        } catch(Exception e) {
-            return false;
-        }
+        return reservationDAO.getClientRentals(client);
+
     }
 
 }
