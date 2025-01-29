@@ -93,6 +93,19 @@ public class CarDAOImpl implements CarDAO {
         return true;
     }
 
+    @Override
+    public boolean unblockCar(Car car) {
+        String sql = "call odblokuj_samochod(?)";
+        try (CallableStatement cs = connection.prepareCall(sql)) {
+            cs.setString(1, car.getId());
+            cs.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
     public boolean updateCarTechnicalState(Car car, java.sql.Date date) {
         String sql = "call aktualizuj_stan_techniczny_dobry(?, ?)";
         try (CallableStatement cs = connection.prepareCall(sql)) {

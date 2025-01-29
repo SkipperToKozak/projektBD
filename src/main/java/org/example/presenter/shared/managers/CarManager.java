@@ -47,4 +47,9 @@ public class CarManager {
     public List<Car> getAvailableCars() {
         return carDAO.getAvailableCars();
     }
+
+    public boolean unblockCar(String carId) {
+        var car = getCarByID(carId);
+        return carDAO.unblockCar(car);
+    }
 }

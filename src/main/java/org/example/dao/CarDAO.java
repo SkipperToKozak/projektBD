@@ -9,6 +9,7 @@ public interface CarDAO {
     boolean updateCar(Car car);
     boolean deleteCar(Car car);
     boolean blockCar(Car car);
+    boolean unblockCar(Car car);
     boolean updateCarTechnicalState(Car car, java.sql.Date date);
     List<Car> getCars();
     List<Car> getAvailableCars();
