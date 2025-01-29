@@ -17,11 +17,9 @@ public class EmployeeCarPanel extends CarPanel {
     private JButton deleteButton;
 
 
-    private String status;
 
     public EmployeeCarPanel(Car car) {
         super(car);
-        this.status = status;
 
         deleteButton = new JButton("Usuń");
         unblockButton = new JButton("Odblokuj");
@@ -53,7 +51,7 @@ public class EmployeeCarPanel extends CarPanel {
 
     }
     public void updateStatus(){
-        if (Objects.equals(status, "zablokowany")) {
+        if (Objects.equals(carStatus, "zablokowany")) {
             //jesli status jest zablokowany
             setBackground(Color.RED);
             buttonPanel.setBackground(Color.RED);
@@ -62,7 +60,7 @@ public class EmployeeCarPanel extends CarPanel {
             updateButton.setEnabled(true);
             deleteButton.setEnabled(true);
         }
-        else if (Objects.equals(status, "wypozyczony") || Objects.equals(status, "zarezerwowany")) {
+        else if (Objects.equals(carStatus, "wypozyczony") || Objects.equals(carStatus, "zarezerwowany")) {
             //jesli status jest wypozyczony
             setBackground(Color.YELLOW);
             buttonPanel.setBackground(Color.YELLOW);
@@ -72,7 +70,7 @@ public class EmployeeCarPanel extends CarPanel {
             deleteButton.setEnabled(false);
 
         }
-        else if (Objects.equals(status, "usuniety")) {
+        else if (Objects.equals(carStatus, "usuniety")) {
             //jesli status jest dostepny
 
             setBackground(Color.DARK_GRAY);
@@ -95,11 +93,11 @@ public class EmployeeCarPanel extends CarPanel {
         }
     }
     public String getStatus() {
-        return status;
+        return carStatus;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.carStatus = status;
     }
     public void setUpdateButtonListener(ActionListener listener) {
         updateButton.addActionListener(listener);
