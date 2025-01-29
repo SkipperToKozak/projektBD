@@ -12,6 +12,7 @@ public class RentConfirmationDialog extends Dialog {
     private JButton cancelButton = new JButton("Anuluj");
     public RentConfirmationDialog(Car car) {
         super("Potwierdzenie wypożyczenia");
+        this.car = car;
 
         messageLabel.setText("Czy na pewno chcesz wypożyczyć ten samochód ("+car.getBrand()+" "+car.getModel()+" "+car.getProductionYear()+")?");
 

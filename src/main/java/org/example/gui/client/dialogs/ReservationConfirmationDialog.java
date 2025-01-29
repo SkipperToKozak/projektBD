@@ -12,6 +12,7 @@ public class ReservationConfirmationDialog extends Dialog {
     private JButton cancelButton = new JButton("Anuluj");
     public ReservationConfirmationDialog(Car car) {
         super("Potwierdzenie rezerwacji");
+        this.car = car;
         messageLabel.setText("Czy na pewno chcesz zarezerwować ten samochód?");
 
 

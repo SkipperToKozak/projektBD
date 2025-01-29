@@ -152,9 +152,11 @@ public class ClientMainPanel extends JFrame {
         this.repaint();
     }
     public void showMyCarsPanel() {
-        revalidate();
-        repaint();
         cardLayout.show(centerPanel, "myCarsPanel");
+        centerPanel.revalidate();
+        centerPanel.repaint();
+        this.revalidate();
+        this.repaint();
     }
 
     public ClientAvailableCarsListPanel getClientAvailableCarsListPanel() {

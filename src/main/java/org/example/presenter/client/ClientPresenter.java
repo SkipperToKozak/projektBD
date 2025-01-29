@@ -132,8 +132,6 @@ public class ClientPresenter {
         if (rentalManager.rentCar(car, username)) {
             System.out.println("Wypożyczono: " + car.getBrand() + " " + car.getId());
             availableCarPanel.setVisible(false);
-        } else {
-
         }
     }
 
@@ -142,8 +140,6 @@ public class ClientPresenter {
         if (rentalManager.rentCar(car, username)) {
             System.out.println("Wypożyczono: " + car.getBrand() + " " + car.getId());
             rentedCarPanel.setVisible(false);
-        } else {
-
         }
     }
 
