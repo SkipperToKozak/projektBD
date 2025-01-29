@@ -6,7 +6,7 @@ import org.example.dao.UserDAOImpl;
 public class UserManager {
     private final UserDAO userDAO;
 
-    public UserManager(UserDAO userDAO) {
+    public UserManager() {
         this.userDAO = new UserDAOImpl();
     }
 

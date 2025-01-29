@@ -103,7 +103,7 @@ public class ClientMainPanel extends JFrame {
 
         myCarsButton.addActionListener(e -> {
             myCarsPanel = new MyCarsPanel();
-            cardLayout.show(centerPanel, "myCarsPanel");
+
 //            repaint();
 //            revalidate();
         });
@@ -131,11 +131,17 @@ public class ClientMainPanel extends JFrame {
 
         availableCarsButton.addActionListener(listener);
     }
+    public void setMyCarsButtonListener(ActionListener listener) {
+        myCarsButton.addActionListener(listener);
+    }
     public void showAvailableCarsPanel() {
 //        clientAvailableCarsListPanel = new ClientAvailableCarsListPanel();
-        revalidate();
-        repaint();
+//        revalidate();
+//        repaint();
         cardLayout.show(centerPanel, "clientAvailableCarsListPanel");
+    }
+    public void showMyCarsPanel() {
+        cardLayout.show(centerPanel, "myCarsPanel");
     }
 
     public ClientAvailableCarsListPanel getClientAvailableCarsListPanel() {
