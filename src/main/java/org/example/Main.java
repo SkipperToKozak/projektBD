@@ -10,10 +10,10 @@ import org.example.presenter.employee.EmployeePresenter;
 public class Main {
     public static void main(String[] args) {
 //        LoginForm loginForm = new LoginForm();
-        ClientPresenter clientPresenter = new ClientPresenter();
+//        ClientPresenter clientPresenter = new ClientPresenter();
 //        ClientMainPanel clientMainPanel = new ClientMainPanel("Test");
 //        EmployeeMainPanel employeeMainPanel = new EmployeeMainPanel("Test");
-//        EmployeePresenter employeePresenter = new EmployeePresenter();
+        EmployeePresenter employeePresenter = new EmployeePresenter();
 
 
         }

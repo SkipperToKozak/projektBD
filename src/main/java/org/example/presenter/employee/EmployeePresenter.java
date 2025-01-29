@@ -19,7 +19,6 @@ import java.sql.Date;
 
 public class EmployeePresenter {
     private EmployeeMainPanel view;
-    private AddCarDialog addCarDialog;
     private final CarManager carManager = new CarManager();
     private final ReservationManager reservationManager = new ReservationManager();
     private final UserManager userManager = new UserManager();
@@ -63,12 +62,12 @@ public class EmployeePresenter {
     }
 
     private void onAddCarButtonClicked() {
-        addCarDialog = view.getAddCarDialog();
-        addCarDialog.setConfirmAddCarButtonListener(e -> onConfirmAddButton());
+        AddCarDialog addCarDialog = new AddCarDialog();
+        addCarDialog.setConfirmAddCarButtonListener(e -> onConfirmAddButton(addCarDialog));
         addCarDialog.setVisible(true);
     }
 
-    private void onConfirmAddButton() {
+    private void onConfirmAddButton(AddCarDialog addCarDialog) {
         System.out.println("Przycisk został kliknięty!"); // Sprawdzenie działania
 
         String carId = addCarDialog.getIdField().getText();
@@ -84,12 +83,12 @@ public class EmployeePresenter {
         Date date = null;
 
         if (carManager.addCar(carId, brand, model, productionYear, color, seatAmount, horsePower, mileage, status, date)) {
-            System.out.println("WTF");
+            System.out.println("Dodano nowy samochód");
             onCarsButtonClicked(); // Odświeżenie listy samochodów po dodaniu nowego auta
             addCarDialog.dispose();
 
         } else {
-            System.out.println("Not this time");
+            System.out.println("Nie udało się dodać nowego samochodu");
         }
 
 
