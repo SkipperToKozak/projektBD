@@ -1,5 +1,6 @@
 package org.example.presenter.employee;
 
+import org.example.gui.client.panels.ClientMainPanel;
 import org.example.gui.client.panels.listElements.carPanel.AvailableCarPanel;
 import org.example.gui.employee.dialogs.AddCarDialog;
 import org.example.gui.employee.panels.AllClientsListPanel;
@@ -13,21 +14,29 @@ import org.example.presenter.shared.managers.CarManager;
 import org.example.presenter.shared.managers.ReservationManager;
 import org.example.presenter.shared.managers.UserManager;
 
+import javax.swing.*;
 import java.sql.Date;
 
 public class EmployeePresenter {
-    private final EmployeeMainPanel view = new EmployeeMainPanel("Test");
+    private EmployeeMainPanel view;
     private AddCarDialog addCarDialog = new AddCarDialog();
     private final CarManager carManager = new CarManager();
     private final ReservationManager reservationManager = new ReservationManager();
     private final UserManager userManager = new UserManager();
 
     public EmployeePresenter() {
+        SwingUtilities.invokeLater(() -> {
+            view = new EmployeeMainPanel("Test");
+            initListeners();
+        });
+
+    }
+
+    private void initListeners() {
         this.view.setCarsButtonListener(e -> onCarsButtonClicked());
         this.view.setClientsButtonListener(e -> onClientsButtonClicked());
         this.view.setAddCarButtonListener(e -> onAddCarButtonClicked());
         this.addCarDialog.setConfirmAddCarButtonListener(e -> onConfirmAddButton());
-
     }
 
     private void onCarsButtonClicked() {
