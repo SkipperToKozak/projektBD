@@ -17,6 +17,10 @@ public class UserManager {
         return userDAO.getClients();
     }
 
+    public User getUserByLogin(String login) {
+        return userDAO.getUserByLogin(login);
+    }
+
     public boolean addClient() {
         return false;
     }

@@ -23,6 +23,8 @@ public class EmployeePresenter {
     private final CarManager carManager = new CarManager();
     private final ReservationManager reservationManager = new ReservationManager();
     private final UserManager userManager = new UserManager();
+    private EmployeeCarsListPanel carsListPanel;
+    private AllClientsListPanel clientListPanel;
 
     public EmployeePresenter() {
         SwingUtilities.invokeLater(() -> {
@@ -40,7 +42,9 @@ public class EmployeePresenter {
     }
 
     private void onCarsButtonClicked() {
-        var carsListPanel = view.getCarsListPanel();
+        carsListPanel = view.getCarsListPanel();
+        carsListPanel.getListPanel().removeAll();
+
         var carList = carManager.getCars();
         for (Car car : carList) {
             carsListPanel.addCarPanel(new EmployeeCarPanel(car.getBrand(), car.getModel(), String.valueOf(car.getProductionYear()), car.getStatus()));
@@ -49,7 +53,9 @@ public class EmployeePresenter {
     }
 
     private void onClientsButtonClicked() {
-        var clientListPanel = view.getAllClientsListPanel();
+        clientListPanel = view.getAllClientsListPanel();
+        clientListPanel.getListPanel().removeAll();
+
         var clientsList = userManager.getClients();
         for (User user : clientsList) {
             clientListPanel.addClientsPanel(new ClientInfoPanel(user.getFirstName(), user.getLastName(), user.getPesel()));

@@ -70,10 +70,7 @@ public class ReservationManager {
     }
 
     public List<Reservation> getClientReservations(User client) {
-
-           return reservationDAO.getClientReservations(client);
-
-
+        return reservationDAO.getClientReservations(client);
     }
 
     public List<Reservation> getClientReservations(String clientLogin) {
