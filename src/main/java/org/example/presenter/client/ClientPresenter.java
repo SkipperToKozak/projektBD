@@ -67,6 +67,7 @@ public class ClientPresenter {
 
     private void onMyCarsButtonClicked() {
         myCarsPanel = view.getMyCarsPanel();
+        myCarsPanel.getListPanel().removeAll();
         var reservationList  = reservationManager.getClientReservations(username);
         var rentList  = reservationManager.getClientRentals(username);
 
@@ -74,6 +75,11 @@ public class ClientPresenter {
             var car = carManager.getCarByID(reservation.getCarId());
             System.out.println("Wyswietlono na liscie: " + car.getId());
             myCarsPanel.addCarPanel(new HistoryCarPanel(car, reservation));
+        }
+        for (var rent : rentList) {
+            var car = carManager.getCarByID(rent.getCarId());
+            System.out.println("Wyswietlono na liscie: " + car.getId());
+            myCarsPanel.addCarPanel(new HistoryCarPanel(car, rent));
         }
         view.showMyCarsPanel();
     }

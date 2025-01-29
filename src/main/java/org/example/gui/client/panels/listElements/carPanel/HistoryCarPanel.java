@@ -15,6 +15,7 @@ public class HistoryCarPanel extends CarPanel {
 
     public HistoryCarPanel(Car car, Reservation reservation){
         super(car);
+
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 10, 5, 10);
         gbc.gridx = 0;
@@ -24,8 +25,5 @@ public class HistoryCarPanel extends CarPanel {
         gbc.gridx = 1;
         returnDateLabel = new JLabel("Data zwrotu: " + returnDate);
         add(returnDateLabel, gbc);
-
-
-
     }
 }

@@ -66,13 +66,16 @@ public class EmployeePresenter {
         employeeCarPanel.setStatus(status);
         employeeCarPanel.updateStatus();
         System.out.println("Usunięto samochód: " + car.getId());
-//        carManager.deleteCar(car.getId());
+        carManager.deleteCar(car.getId());
+        onCarsButtonClicked();
     }
 
     private void onBlockButtonClicked(Car car, EmployeeCarPanel employeeCarPanel) {
         String status = "zablokowany";
         employeeCarPanel.setStatus(status);
         employeeCarPanel.updateStatus();
+        carManager.blockCar(car.getId());
+        onCarsButtonClicked();
         System.out.println("Zablokowano samochód: " + car.getId());
     }
 
@@ -80,6 +83,8 @@ public class EmployeePresenter {
         String status = "dostepny";
         employeeCarPanel.setStatus(status);
         employeeCarPanel.updateStatus();
+        carManager.unblockCar(car.getId());
+        onCarsButtonClicked();
         System.out.println("Odblokowano samochód: " + car.getId());
     }
 
