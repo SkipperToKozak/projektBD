@@ -3,7 +3,6 @@ package org.example.presenter.client;
 import org.example.gui.client.panels.ClientAvailableCarsListPanel;
 import org.example.gui.client.panels.ClientMainPanel;
 import org.example.gui.client.panels.listElements.carPanel.AvailableCarPanel;
-import org.example.gui.employee.panels.ClientCarsListPanel;
 import org.example.presenter.shared.managers.CarManager;
 
 public class ClientPresenter {
@@ -16,7 +15,7 @@ public class ClientPresenter {
 
     }
     private void onAvailableCarsButtonClicked() {
-        var carList  = carManager.showCars();
+        var carList  = carManager.getCars();
 //        clientAvailableCarsListPanel.addCarPanel(new AvailableCarPanel("Renault", "Clio", "2011"));
         for (var car : carList) {
 

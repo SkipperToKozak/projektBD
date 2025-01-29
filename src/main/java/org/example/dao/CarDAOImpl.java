@@ -119,7 +119,7 @@ public class CarDAOImpl implements CarDAO {
     }
 
     @Override
-    public List<Car> showCars() {
+    public List<Car> getCars() {
         List<Car> cars = new ArrayList<>();
         String sql = "select * from wyswietl_samochody()";
 
@@ -147,7 +147,7 @@ public class CarDAOImpl implements CarDAO {
     }
 
     @Override
-    public List<Car> clientShowCars() {
+    public List<Car> getAvailableCars() {
         List<Car> cars = new ArrayList<>();
         String sql = "select * from wyswietl_samochody() where status_samochodu = 'dostepny'";
 

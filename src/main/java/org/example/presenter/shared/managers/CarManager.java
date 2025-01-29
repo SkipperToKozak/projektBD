@@ -40,8 +40,11 @@ public class CarManager {
         return carDAO.blockCar(car);
     }
 
-    public List<Car> showCars() {
-            return carDAO.showCars();
+    public List<Car> getCars() {
+        return carDAO.getCars();
+    }
 
+    public List<Car> getAvailableCars() {
+        return carDAO.getAvailableCars();
     }
 }
