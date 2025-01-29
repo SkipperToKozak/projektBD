@@ -5,6 +5,8 @@ import org.example.gui.client.panels.listElements.carPanel.RentedCarPanel;
 import org.example.gui.client.panels.listElements.carPanel.ReservedCarPanel;
 import org.example.gui.shared.panels.ScrollCenterPanel;
 
+import java.awt.event.ActionListener;
+
 public class MyCarsPanel extends ScrollCenterPanel {
     public MyCarsPanel() {
         super();

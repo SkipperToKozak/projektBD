@@ -90,6 +90,7 @@ public class UserDAOImpl implements UserDAO {
         return clients;
     }
 
+    @Override
     public List<User> getEmployees() {
         List<User> employees = new ArrayList<>();
         String sql = "select * from pracownicy";
