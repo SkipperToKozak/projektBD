@@ -1,6 +1,7 @@
 package org.example.presenter.shared.managers;
 
 import org.example.dao.*;
+import org.example.model.Car;
 import org.example.model.Reservation;
 import org.example.model.User;
 
@@ -47,8 +48,7 @@ public class ReservationManager {
         }
     }
 
-    public boolean reserveCar(String carId, String userLogin) {
-        var car = carDAO.getCarById(carId);
+    public boolean reserveCar(Car car , String userLogin) {
         var user = userDAO.getUserByLogin(userLogin);
         try {
             reservationDAO.reserveCar(car, user);
@@ -58,8 +58,7 @@ public class ReservationManager {
         }
     }
 
-    public boolean rentCar(String carId, String userLogin) {
-        var car = carDAO.getCarById(carId);
+    public boolean rentCar(Car car, String userLogin) {
         var user = userDAO.getUserByLogin(userLogin);
         return reservationDAO.rentCar(car, user);
     }

@@ -88,16 +88,16 @@ public class ClientPresenter {
     }
     private void onRentButtonClicked(Car car, AvailableCarPanel availableCarPanel) {
         RentConfirmationDialog dialog = new RentConfirmationDialog(car);
-        dialog.setConfirmRentButtonListener(e -> onConfirmRentButtonClicked(car, availableCarPanel, "jan_kowalski"));
+        dialog.setConfirmRentButtonListener(e -> onConfirmRentButtonClicked(car, availableCarPanel));
         dialog.setCancelRentButtonListener(e -> dialog.dispose());
         dialog.setVisible(true);
     }
-    private void onConfirmRentButtonClicked(Car car, AvailableCarPanel availableCarPanel, String login) {
+    private void onConfirmRentButtonClicked(Car car, AvailableCarPanel availableCarPanel) {
         //zmiana statusu samochodu na wypozyczony
         //sprawdzenie czy udalo sie wypozyyczyc
         //jesli tak to usuniecie panelu z listy
         availableCarPanel.setVisible(false);
-        if (reservationManager.rentCar(car.getId(), login)) {
+        if (reservationManager.rentCar(car, username)) {
             System.out.println("Wypożyczono: " + car.getBrand() + " " + car.getId());
             availableCarPanel.setVisible(false);
         } else {
@@ -118,7 +118,7 @@ public class ClientPresenter {
         //sprawdzenie czy udalo sie zarezerwowac
         //jesli tak to usuniecie panelu z listy
         availableCarPanel.setVisible(false);
-        if (reservationManager.reserveCar(car.getId(), "jan_kowalski")) {
+        if (reservationManager.reserveCar(car, username)) {
             System.out.println("Zarezerwowano: " + car.getBrand() + " " + car.getId());
 
         } else {
