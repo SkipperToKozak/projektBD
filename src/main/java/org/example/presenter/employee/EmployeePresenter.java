@@ -81,8 +81,9 @@ public class EmployeePresenter {
         int seatAmount = Integer.parseInt(addCarDialog.getSeatsField().getText());
         int horsePower = Integer.parseInt(addCarDialog.getHorsePowerField().getText());
         int mileage = Integer.parseInt(addCarDialog.getMileageField().getText());
-//        java.sql.Date date = java.sql.Date.valueOf(addCarDialog.getDatePicker().get);
+        //java.sql.Date date = java.sql.Date.valueOf(addCarDialog.getDatePicker().toString());
         Date date = null;
+
 
         if (carManager.addCar(carId, brand, model, productionYear, color, seatAmount, horsePower, mileage, status, date)) {
             System.out.println("Dodano nowy samochód");

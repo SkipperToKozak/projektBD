@@ -58,6 +58,12 @@ public class ReservationManager {
         }
     }
 
+    public boolean rentCar(String carId, String userLogin) {
+        var car = carDAO.getCarById(carId);
+        var user = userDAO.getUserByLogin(userLogin);
+        return reservationDAO.rentCar(car, user);
+    }
+
     public boolean returnCar(String carId, String clientLogin) {
         var car = carDAO.getCarById(carId);
         var user = userDAO.getUserByLogin(clientLogin);

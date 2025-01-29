@@ -81,6 +81,7 @@ public class CarDAOImpl implements CarDAO {
         return true;
     }
 
+    @Override
     public boolean blockCar(Car car) {
         String sql = "call zablokuj_samochod(?)";
         try (CallableStatement cs = connection.prepareCall(sql)) {
@@ -106,6 +107,7 @@ public class CarDAOImpl implements CarDAO {
         return true;
     }
 
+    @Override
     public boolean updateCarTechnicalState(Car car, java.sql.Date date) {
         String sql = "call aktualizuj_stan_techniczny_dobry(?, ?)";
         try (CallableStatement cs = connection.prepareCall(sql)) {
