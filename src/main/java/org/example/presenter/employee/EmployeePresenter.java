@@ -47,9 +47,42 @@ public class EmployeePresenter {
 
         var carList = carManager.getCars();
         for (Car car : carList) {
-            carsListPanel.addCarPanel(new EmployeeCarPanel(car.getBrand(), car.getModel(), String.valueOf(car.getProductionYear()), car.getStatus()));
+            EmployeeCarPanel employeeCarPanel = new EmployeeCarPanel(car.getBrand(), car.getModel(), String.valueOf(car.getProductionYear()), car.getStatus());
+            employeeCarPanel.setBlockButtonListener(e -> onBlockButtonClicked(car, employeeCarPanel));
+            employeeCarPanel.setUnblockButtonListener(e -> onUnblockButtonClicked(car, employeeCarPanel));
+            employeeCarPanel.setDeleteButtonListener(e -> onDeleteButtonClicked(car, employeeCarPanel));
+            employeeCarPanel.setUpdateButtonListener(e -> onUpdateButtonClicked(car, employeeCarPanel));
+            carsListPanel.addCarPanel(employeeCarPanel);
         }
         view.showAvailableCarsPanel();
+    }
+
+    private void onUpdateButtonClicked(Car car, EmployeeCarPanel employeeCarPanel) {
+
+
+
+    }
+
+    private void onDeleteButtonClicked(Car car, EmployeeCarPanel employeeCarPanel) {
+        String status = "usuniety";
+        employeeCarPanel.setStatus(status);
+        employeeCarPanel.updateStatus();
+        System.out.println("Usunięto samochód: " + car.getId());
+//        carManager.deleteCar(car.getId());
+    }
+
+    private void onBlockButtonClicked(Car car, EmployeeCarPanel employeeCarPanel) {
+        String status = "zablokowany";
+        employeeCarPanel.setStatus(status);
+        employeeCarPanel.updateStatus();
+        System.out.println("Zablokowano samochód: " + car.getId());
+    }
+
+    private void onUnblockButtonClicked(Car car, EmployeeCarPanel employeeCarPanel) {
+        String status = "dostepny";
+        employeeCarPanel.setStatus(status);
+        employeeCarPanel.updateStatus();
+        System.out.println("Odblokowano samochód: " + car.getId());
     }
 
     private void onClientsButtonClicked() {

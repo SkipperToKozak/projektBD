@@ -4,9 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CarPanel extends JPanel {
-    private JLabel carBrandLabel;
-    private JLabel carModelLabel;
-    private JLabel carYearLabel;
+    protected JLabel carBrandLabel;
+    protected JLabel carModelLabel;
+    protected JLabel carYearLabel;
     protected JPanel buttonPanel;
     protected String carBrand;
     protected String carModel;
@@ -50,5 +50,10 @@ public class CarPanel extends JPanel {
 
         // Ustaw preferowany rozmiar (opcjonalnie)
         setPreferredSize(new Dimension(300, 60));
+    }
+    protected void setLabelsForeground(Color color) {
+        carBrandLabel.setForeground(color);
+        carModelLabel.setForeground(color);
+        carYearLabel.setForeground(color);
     }
 }
