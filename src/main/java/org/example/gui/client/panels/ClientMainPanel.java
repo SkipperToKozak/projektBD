@@ -1,6 +1,7 @@
 package org.example.gui.client.panels;
 
 import org.example.gui.client.panels.listElements.carPanel.RentedCarPanel;
+import org.example.model.Car;
 
 import javax.swing.*;
 import java.awt.*;
@@ -90,7 +91,7 @@ public class ClientMainPanel extends JFrame {
         centerPanel.add(myCarsPanel, "myCarsPanel");
 
 
-        clientAccountPanel = new ClientAccountPanel("Jan", "Kowalski", "12345678901");
+        clientAccountPanel = new ClientAccountPanel("", "", "");
         centerPanel.add(clientAccountPanel, "clientAccountPanel");
 
         rentedCarPanel = new RentedCarPanel("Polonez", "Caro", "1989");
@@ -109,7 +110,7 @@ public class ClientMainPanel extends JFrame {
         });
 
         myAccountButton.addActionListener(e -> {
-            clientAccountPanel = new ClientAccountPanel("Jan", "Kowalski", "12345678901");
+            clientAccountPanel = new ClientAccountPanel("", "", "");
             cardLayout.show(centerPanel, "clientAccountPanel");
 
         });
@@ -134,14 +135,20 @@ public class ClientMainPanel extends JFrame {
     public void setMyCarsButtonListener(ActionListener listener) {
         myCarsButton.addActionListener(listener);
     }
+    public void setMyAccountButtonListener(ActionListener listener) {
+        myAccountButton.addActionListener(listener);
+    }
     public void showAvailableCarsPanel() {
 //        clientAvailableCarsListPanel = new ClientAvailableCarsListPanel();
 //        revalidate();
 //        repaint();
+
         clientAvailableCarsListPanel = new ClientAvailableCarsListPanel();
         cardLayout.show(centerPanel, "clientAvailableCarsListPanel");
     }
     public void showMyCarsPanel() {
+        revalidate();
+        repaint();
         cardLayout.show(centerPanel, "myCarsPanel");
     }
 
@@ -155,6 +162,7 @@ public class ClientMainPanel extends JFrame {
     public ClientAccountPanel getClientAccountPanel() {
         return clientAccountPanel;
     }
+
 
 }
 
